@@ -12,5 +12,20 @@
 		"ghcr.io/devcontainers/features/python:1": {
 			"toolsToInstall": "pre-commit"
 		}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"github.copilot",
+				"ms-vscode-remote.remote-containers"
+			],
+			"mcp": {
+				"servers": {
+					"hf-mcp-server": {
+					"url": "https://huggingface.co/mcp?login"
+					}
+				}
+			}
+		}
 	}
 }
