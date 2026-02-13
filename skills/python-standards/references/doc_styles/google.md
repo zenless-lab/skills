@@ -1,5 +1,7 @@
 # Google Docstring Style
 
+**Official Reference**: https://google.github.io/styleguide/pyguide.html
+
 ## Philosophy
 Prioritizes human readability. Uses indentation and headers rather than excessive punctuation.
 
