@@ -1,5 +1,7 @@
 # NumPy / SciPy Docstring Style
 
+**Official Reference**: https://numpydoc.readthedocs.io/en/latest/format.html
+
 ## Philosophy
 Verbose and highly structured. Optimized for complex scientific functions with mathematical descriptions and array dimensions.
 
