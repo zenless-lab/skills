@@ -1,6 +1,6 @@
 # PEP 8 Core Standards (Quick Reference)
 
-This is a quick reference summary of the most commonly used PEP 8 rules. For detailed information on specific topics, see the specialized reference files below.
+This is a quick reference summary of the most commonly used PEP 8 rules. For detailed information on specific topics, see the specialized reference files linked throughout this document.
 
 ## Layout & Whitespace
 * **Indentation**: Strictly **4 spaces**. No tabs.

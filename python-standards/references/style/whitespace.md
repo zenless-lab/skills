@@ -211,6 +211,6 @@ FILES = ['setup.cfg', 'tox.ini',]
 initialize(FILES, error=True,)
 
 # Mandatory for single-element tuple:
-FILES = ('setup.cfg',)  # Correct (with parentheses for clarity)
-FILES = 'setup.cfg',    # Wrong (but technically works)
+FILES = ('setup.cfg',)  # Correct (parentheses improve clarity)
+FILES = 'setup.cfg',    # Less clear (parentheses recommended for readability)
 ```
