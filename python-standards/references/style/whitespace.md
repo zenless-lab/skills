@@ -210,7 +210,7 @@ initialize(FILES,
 FILES = ['setup.cfg', 'tox.ini',]
 initialize(FILES, error=True,)
 
-# Mandatory for single-element tuple:
-FILES = ('setup.cfg',)  # Correct (parentheses improve clarity)
-FILES = 'setup.cfg',    # Less clear (parentheses recommended for readability)
+# Single-element tuples (trailing comma is mandatory):
+FILES = ('setup.cfg',)  # Correct: parentheses for clarity
+FILES = 'setup.cfg',    # Acceptable but less clear: parentheses recommended
 ```
