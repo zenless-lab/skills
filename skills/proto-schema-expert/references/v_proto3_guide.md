@@ -4,7 +4,7 @@
 
 ## Key Characteristics
 1.  **Implicit Presence (Singular fields)**: By default, scalar fields do not track presence. A value of `0` is indistinguishable from "unset".
-2.  **`optional` Keyword**: Added back in v3.15+ to allow checking presence (e.g., `has_field()`).
+2.  **`optional` Keyword**: Added back in protoc 3.12 (experimental), GA in 3.15+, to allow checking presence (e.g., `has_field()`).
 3.  **JSON Mapping**: Defines a canonical JSON encoding (lowerCamelCase names).
 4.  **No `required`**: Removed to improve evolution safety.
 
