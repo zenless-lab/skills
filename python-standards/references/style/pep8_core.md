@@ -11,7 +11,7 @@ This is a quick reference summary of the most commonly used PEP 8 rules. For det
     * Methods inside classes: **1 blank line** surrounding.
 
 **→ For detailed whitespace rules (operators, expressions, statements, trailing commas):**  
-See `whitespace.md`
+See [whitespace guide](references/style/whitespace.md)
 
 ## Import Organization
 * **Order**:
@@ -22,7 +22,7 @@ See `whitespace.md`
 * **Style**: Separate lines preferred
 
 **→ For complete import conventions (absolute vs relative, grouping, wildcards, module dunders):**  
-See `imports.md`
+See [import guide](references/style/imports.md)
 
 ## Naming Conventions
 | Type | Convention | Example |
@@ -34,7 +34,7 @@ See `imports.md`
 | **Private Member** | `__double_underscore` | `__mangle_this` |
 
 **→ For complete naming rules (all styles, special forms, prescriptive conventions, inheritance design):**  
-See `naming.md`
+See [naming guide](references/style/naming.md)
 
 ## Comments and Docstrings
 * **Block comments**: Same indentation as code, `# ` prefix
@@ -43,7 +43,7 @@ See `naming.md`
 * **Docstring placement**: Closing `"""` on separate line for multi-line
 
 **→ For complete comment conventions (when to use, formatting, docstring vs comments):**  
-See `comments.md`
+See [comment guide](references/style/comments.md)
 
 ## Programming Recommendations
 * Use `is` for `None` checks: `if x is not None:` (not `if x != None:`).
@@ -53,7 +53,7 @@ See `comments.md`
 * Don't compare boolean values to `True` or `False` using `==`.
 
 **→ For complete programming recommendations (comparisons, exceptions, returns, lambda, etc.):**  
-See `programming_recommendations.md`
+See [programming recommendations](references/style/programming_recommendations.md)
 
 ## Type Annotations
 * Space after colon in variable annotations: `x: int = 5`
@@ -61,15 +61,15 @@ See `programming_recommendations.md`
 * Spaces around `=` when combining annotation with default: `def func(x: int = 0):`
 
 **→ For complete type annotation guidelines (PEP 484, PEP 526, stub files, tools):**  
-See `annotations.md`
+See [annotations guidelines](references/style/annotations.md)
 
 ---
 
 ## When to Load Additional References
 
-* **Uncertain about whitespace around operators?** → Load `whitespace.md`
-* **Need detailed naming rules (underscore forms, inheritance)?** → Load `naming.md`
-* **Import organization questions?** → Load `imports.md`
-* **Comment or docstring formatting?** → Load `comments.md`
-* **Best practices for exceptions, comparisons, returns?** → Load `programming_recommendations.md`
-* **Type hints and annotations?** → Load `annotations.md`
+* **Uncertain about whitespace around operators?** → Load [whitespace](references/style/whitespace.md)
+* **Need detailed naming rules (underscore forms, inheritance)?** → Load [naming](references/style/naming.md)
+* **Import organization questions?** → Load [imports](references/style/imports.md)
+* **Comment or docstring formatting?** → Load [comments](references/style/comments.md)
+* **Best practices for exceptions, comparisons, returns?** → Load [programming_recommendations](references/style/programming_recommendations.md)
+* **Type hints and annotations?** → Load [annotations](references/style/annotations.md)
