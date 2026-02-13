@@ -1,5 +1,7 @@
 # Sphinx / reStructuredText (reST) Style
 
+**Official Reference**: https://sphinx-rtd-tutorial.readthedocs.io/en/latest/docstrings.html
+
 ## Philosophy
 Prioritizes tooling and rich linking. The native format for Python's official documentation.
 
