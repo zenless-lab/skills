@@ -64,10 +64,10 @@ Store templates, images, or static data files.
 2. **Plan**: Create a `todo` list for the creation steps.
 3. **Validate**: Ensure the proposed name follows the strict regex `^[a-z0-9]+(-[a-z0-9]+)*$`.
 4. **Scaffold**:
-* Create `./skills/` (if missing).
-* Create `./skills/<skill-name>/`.
-* Create `./skills/<skill-name>/SKILL.md`.
-* Create subdirectories (`scripts`, `references`) if the skill requires code or heavy context.
+- Create `./skills/` (if missing).
+- Create `./skills/<skill-name>/`.
+- Create `./skills/<skill-name>/SKILL.md`.
+- Create subdirectories (`scripts`, `references`) if the skill requires code or heavy context.
 
 
 5. **Review**: Confirm the file structure is correct.
