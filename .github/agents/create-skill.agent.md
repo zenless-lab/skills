@@ -85,4 +85,3 @@ Store templates, images, or static data files.
 * If you need to search for existing code to wrap into a skill, use `search` tools.
 * If you need to verify a concept or look up external API docs to write a `reference` file, use `web`.
 
-```
