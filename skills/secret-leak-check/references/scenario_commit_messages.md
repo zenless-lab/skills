@@ -6,9 +6,9 @@ Review commit messages for leakage risk.
 
 If user does not explicitly disable commit message checking:
 
-1. Inspect pending commit messages that are in current explicit scan range.
-2. By default, do not infer and scan the full PR commit range.
-3. Scan commit subject and body for secrets/privacy leakage.
+1. Inspect commit messages only for commits whose diffs are included in the current explicit scan range (for example, the commit range or list of SHAs provided to the scanner).
+2. By default, do not expand this range to the full PR commit history; only use the explicitly provided scan range.
+3. For each included commit, scan the commit subject and body for secrets/privacy leakage.
 
 If user explicitly asks to scan all commits in a PR, scan commit messages for every commit in that PR range.
 
