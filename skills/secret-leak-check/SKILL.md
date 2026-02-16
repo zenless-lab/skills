@@ -32,14 +32,14 @@ Use [references/scope_selection.md](references/scope_selection.md).
 
 Default behavior when user gives no explicit scope:
 
-1. Scan staged diffs first.
-2. Then scan unstaged working tree changes against local `HEAD`.
-3. If no staged files exist, scan all changed files in the working tree (`staged + unstaged + untracked` where relevant).
+1. Scan staged changes first (index vs `HEAD`, e.g., `git diff --cached`).
+2. Then scan unstaged working tree changes (working tree vs index, e.g., `git diff`).
+3. If no staged changes exist, scan all modified and untracked files in the working tree.
 
 If user explicitly asks to scan all commits in a PR, expand scope to:
 
-- Current staged diff (if any).
-- Current unstaged/untracked working tree changes (if any).
+- Current staged diff (index vs `HEAD`, if any).
+- Current unstaged/untracked working tree changes (working tree vs index, if any).
 - Every commit in the PR range, scanned commit-by-commit for leak content in diffs and commit messages.
 
 If user explicitly asks to scan all files, ignore diff-only logic and scan the entire requested range.
