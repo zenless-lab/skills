@@ -9,9 +9,9 @@ Use this reference when scan scope is based on changes, not full repository.
 
 ## Checklist
 
-1. Inspect staged diff first.
-2. Inspect unstaged diff against local `HEAD`.
-3. If no staged files exist, inspect all changed files in working tree.
+1. Inspect staged diff first (index vs `HEAD`, for example `git diff --cached` / `git diff --staged`).
+2. Inspect unstaged working tree changes (working tree vs index, for example `git diff`).
+3. If no staged files exist, also inspect the full working tree diff against local `HEAD` (for example `git diff HEAD`).
 
 ## Explicit PR all-commits mode
 
