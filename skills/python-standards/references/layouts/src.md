@@ -1,26 +1,29 @@
-# The "Src" Layout (Production Standard)
+## Python Project Layout (src-layout)
 
-## Overview
-This layout forces the code to be installed to run tests, preventing "import works on my machine but fails in production" errors. It is the gold standard for modern Python packaging.
+### Directory Structure
 
-## Directory Tree
-```text
+```
 project_root/
-├── src/
-│   └── my_package/       # Actual code lives here
-│       ├── __init__.py
-│       ├── core.py
-│       └── utils.py
-├── tests/                # Tests live OUTSIDE the package
+├── pyproject.toml       # Project metadata and build configuration
+├── README.md            # Project documentation
+├── .gitignore           # Git ignore rules
+├── src/                 # Source code root
+│   └── my_package/      # Actual package directory
+│       ├── __init__.py  # Package initialization
+│       ├── module.py    # Business logic
+│       └── sub_pkg/     # Sub-packages
+├── tests/               # Test suite (parallel to src)
 │   ├── __init__.py
-│   └── test_core.py
-├── pyproject.toml        # Build configuration
-├── tox.ini               # Test runner config
-└── README.md
+│   └── test_module.py
+├── scripts              # Utility scripts (optional)
+└── docs/                # Documentation files
 ```
 
-## Import Mechanics
+### Implementation Rules
 
-* Code in `tests/` cannot simply `import my_package` via relative path.
-* You must install the package in editable mode (`pip install -e .`) to run tests.
-* **Benefit**: Guarantees that you are testing the code that will actually be built and distributed.
+1. **Code Isolation**: Place all application source code exclusively within the `src/` directory.
+2. **Package Nesting**: Create a unique package directory (e.g., `my_package/`) inside `src/`.
+3. **Import Mechanism**: Require editable installation (`pip install -e .`) during development to ensure the package is importable via the `src` path.
+4. **Test Separation**: Keep the `tests/` directory at the project root, outside of the `src/` folder.
+5. **Centralized Config**: Use `pyproject.toml` as the primary configuration file for build systems and tools (e.g., Ruff, Pytest, MyPy).
+6. **No Logic in Root**: Do not place `.py` files in the `project_root/` except for essential configuration scripts.

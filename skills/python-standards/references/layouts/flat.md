@@ -1,21 +1,27 @@
-# The "Flat" Layout (Pragmatic/Script)
+## Python Project Layout (flat-layout)
 
-## Overview
-The package directory resides directly in the project root. It is simpler for beginners, scripts, and internal tools where distribution to PyPI is not the primary goal.
+### Directory Structure
 
-## Directory Tree
-```text
+```
 project_root/
-├── my_package/           # Code lives in root
+├── pyproject.toml       # Project metadata
+├── README.md
+├── .gitignore
+├── my_package/          # Source code directly in root
 │   ├── __init__.py
-│   └── main.py
-├── tests/                # Tests alongside package
-│   └── test_main.py
-├── requirements.txt      # Dependencies
-└── main.py               # Entry point script
+│   ├── core.py
+│   └── utils.py
+├── tests/               # Test code
+│   └── test_core.py
+└── scripts/             # Utility scripts (optional)
+    └── run_job.py
+
 ```
 
-## Pros & Cons
+### Implementation Rules
 
-* **Pros**: Zero configuration. `python main.py` works immediately without `pip install`.
-* **Cons**: Easy to accidentally import files that won't be included in the final package distribution.
+1. **Direct Access**: Place the package directory (`my_package/`) directly under the `project_root/`.
+2. **Path Resolution**: Enable the Python interpreter to recognize the package in the current working directory without requiring an editable install.
+3. **Namespace Integrity**: Ensure the top-level package name does not conflict with Python standard library modules or common third-party dependencies.
+4. **Test Referencing**: Import the package within the `tests/` directory using standard absolute imports based on the root environment.
+5. **Deployment Fit**: Use for standalone scripts, simple microservices, or Docker-based deployments where `src/` isolation is not required.
