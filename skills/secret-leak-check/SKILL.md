@@ -37,7 +37,7 @@ Default behavior when user gives no explicit scope:
 3. If no staged files exist, scan all changed files in the working tree.
 
 If user explicitly asks to scan all files, ignore diff-only logic and scan the entire requested range.
-After scope is determined, build the concrete target file list. Do not report "full scan complete" unless all in-scope files satisfy both conditions.
+After scope is determined, build the concrete target file list. Do not report "full scan complete" unless all in-scope files meet the full-scan completion criteria defined in [references/scenario_full_scan.md](references/scenario_full_scan.md) (for example, each file has been both read and checked at least once).
 
 If any files are excluded, list them explicitly with reason.
 
