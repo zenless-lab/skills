@@ -15,9 +15,9 @@ If user explicitly specifies scan scope, follow it exactly:
 
 Apply this default behavior:
 
-1. Scan staged diff (`git diff --cached`).
-2. Scan unstaged working tree diff against local `HEAD`.
-3. If there are no staged files, scan all changed files in working tree (`staged + unstaged + untracked` where relevant).
+1. Scan staged diff (index vs `HEAD`, for example `git diff --cached` / `git diff --staged`).
+2. Scan unstaged working tree diff (working tree vs index, for example `git diff`, which excludes already-staged changes).
+3. If there are no staged files and a broader scope is needed, scan all changed files in the working tree by taking the union of staged, unstaged, and untracked files (file sets from `git diff --cached`, `git diff`, and untracked file listing), without re-counting changes already covered by the previous diffs.
 4. Do not scan all PR commits unless user explicitly requests it.
 
 ## 3) PR all-commits mode (explicit only)
