@@ -15,8 +15,8 @@ If user explicitly specifies scan scope, follow it exactly:
 Apply this default behavior:
 
 1. Scan staged diff (`git diff --cached`).
-2. Scan local-vs-remote diff between current local branch `HEAD` and latest commit of upstream tracking branch (for example `origin/main`), not merely the previous local commit.
-3. If there are no staged files, scan all changed files in working tree (`staged + unstaged + untracked` where relevant).
+2. Scan local-vs-remote diff using merge-base to compare only local changes (for example, `git diff @{upstream}...HEAD` to show changes introduced on the local branch).
+3. If there are no staged files, scan all changed files in working tree (`unstaged + untracked` where relevant).
 
 ## 3) Remote baseline selection
 

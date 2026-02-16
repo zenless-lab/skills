@@ -6,8 +6,8 @@ Review commit messages for leakage risk.
 
 If user does not explicitly disable commit message checking:
 
-1. Identify latest commit of remote tracking branch.
-2. Inspect local commits between that remote commit and local `HEAD`.
+1. Identify the remote tracking branch (for example, `@{upstream}`).
+2. Inspect local commits that are reachable from local `HEAD` but not from the remote tracking branch (for example, `HEAD` but not `@{upstream}`).
 3. Scan commit subject and body for secrets/privacy leakage.
 
 Do not limit this to only the immediate previous commit.

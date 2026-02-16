@@ -33,7 +33,7 @@ Use [references/scope_selection.md](references/scope_selection.md).
 Default behavior when user gives no explicit scope:
 
 1. Scan staged diffs first.
-2. Then scan the diff between current branch local `HEAD` and the latest commit of its remote tracking branch.
+2. Then scan the diff using merge-base to compare only local changes (for example, `git diff @{upstream}...HEAD`).
 3. If no staged files exist, scan all changed files in the working tree.
 
 If user explicitly asks to scan all files, ignore diff-only logic and scan the entire requested range.
@@ -60,7 +60,7 @@ Load only relevant references:
 - Full-repo/range behavior: [references/scenario_full_scan.md](references/scenario_full_scan.md)
 - Commit message review: [references/scenario_commit_messages.md](references/scenario_commit_messages.md)
 
-If the user does not explicitly disable it, also check commit messages between local commits and the latest remote tracking commit.
+If the user does not explicitly disable it, also check commit messages for local commits that are reachable from `HEAD` but not from the remote tracking branch.
 
 ### Step 4: Validate Git Identity Privacy (Conditional)
 

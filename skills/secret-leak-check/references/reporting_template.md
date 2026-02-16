@@ -33,7 +33,7 @@ For each finding:
 
 ## 4) Commit message check
 
-- Range checked: local commits not in latest remote commit
+- Range checked: commits in `HEAD` not in `@{upstream}` (unpushed local commits)
 - Result: pass/fail
 - Findings: hashes and remediation actions if any
 
