@@ -7,15 +7,15 @@ This guide provides technical specifications and practical insights for implemen
 DPO is designed to fine-tune a model to prefer "chosen" responses over "rejected" ones by treating the language model itself as an implicit reward model.
 
 * **Core Objective**:
-* **Preference Learning**: Directly optimizes the policy to maximize the log-likelihood of preferred completions while minimizing it for rejected ones.
-* **Simplicity**: Eliminates the need to train a separate Reward Model (RM) and the instability of Proximal Policy Optimization (PPO).
+  * **Preference Learning**: Directly optimizes the policy to maximize the log-likelihood of preferred completions while minimizing it for rejected ones.
+  * **Simplicity**: Eliminates the need to train a separate Reward Model (RM) and the instability of Proximal Policy Optimization (PPO).
 
 * **Mathematical Principle**:
-The DPO loss function uses a reference model () to constrain the policy (). It increases the probability of the chosen response  relative to the rejected response , scaled by a temperature parameter . This implicitly enforces a KL-divergence penalty to ensure the model does not deviate too far from the original SFT distribution.
+The DPO loss function uses a reference model ($\pi_{ref}$) to constrain the policy ($\pi_{\theta}$). It increases the probability of the chosen response $y_w$ relative to the rejected response , scaled by a temperature parameter $\beta$. This implicitly enforces a KL-divergence penalty to ensure the model does not deviate too far from the original SFT distribution.
 
 ## 2. Key Hyperparameter Guidelines
 
-DPO is highly sensitive to hyperparameters, particularly the relationship between the learning rate and the  coefficient.
+DPO is highly sensitive to hyperparameters, particularly the relationship between the learning rate and the $\beta$ coefficient.
 
 | Parameter | Recommended Range | Impact/Notes |
 | --- | --- | --- |
@@ -29,7 +29,7 @@ DPO is highly sensitive to hyperparameters, particularly the relationship betwee
 
 DPO training is resource-intensive as it requires keeping two models (Policy and Reference) in memory.
 
-* **Reference Model Offloading**: Pre-compute the log-probabilities for the reference model  on your dataset before training. This allows you to remove the reference model from VRAM entirely during the optimization of .
+* **Reference Model Offloading**: Pre-compute the log-probabilities for the reference model $\pi_{ref}$ on your dataset before training. This allows you to remove the reference model from VRAM entirely during the optimization of $\pi_{\theta}$.
 * **PEFT (LoRA/QLoRA)**: Fine-tune only a small set of adapters. Since the reference model is just the base model without adapters, memory overhead is significantly reduced.
 * **Gradient Checkpointing**: Essential for handling long context sequences (e.g., 4k+ tokens) by recomputing activations during the backward pass.
 * **Sequence Packing**: Similar to SFT, packing preference pairs into a single sequence eliminates padding waste and improves token throughput.

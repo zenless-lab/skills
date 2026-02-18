@@ -8,10 +8,9 @@ GRPO is an on-policy reinforcement learning algorithm designed to solve the memo
 
 * **Core Innovation: Eliminating the Critic**:
 * In PPO, a Critic (Value Model) of similar size to the Policy model is required to estimate the baseline, effectively doubling VRAM usage.
-* GRPO samples a group of  responses for each prompt and uses the mean and standard deviation of the group's rewards to estimate the advantage.
+* GRPO samples a group of $G$ responses for each prompt and uses the mean and standard deviation of the group's rewards to estimate the advantage.
 * **Mathematical Principle**:
-The advantage for the -th completion in a group is calculated as:
-This treats the current group as a dynamic baseline, effectively transforming the RL task into a comparative ranking problem within the sampled set.
+The advantage for the -th completion in a group is calculated as: $$A_i = \frac{r_i - \text{mean}(r_1, r_2, \dots, r_G)}{\text{std}(r_1, r_2, \dots, r_G) + \epsilon}$$ This treats the current group as a dynamic baseline, effectively transforming the RL task into a comparative ranking problem within the sampled set.
 * **Primary Use Case**: Especially effective for **Reinforcement Learning with Verifiable Rewards (RLVR)**, where objective correctness (e.g., math, code) can be checked via rule-based verifiers or unit tests.
 
 ## 2. Key Hyperparameter Guidelines
@@ -20,7 +19,7 @@ GRPO stability is highly sensitive to group size and the KL divergence penalty.
 
 | Parameter | Recommended Range | Notes |
 | --- | --- | --- |
-| **Group Size ($G$)** | 8 – 64 | **Critical parameter.** Larger  provides more accurate advantage estimates but increases sampling time linearly. DeepSeek-V3 uses . |
+| **Group Size ($G$)** | 8 – 64 | **Critical parameter.** Larger $G$ provides more accurate advantage estimates but increases sampling time linearly. DeepSeek-V3 uses $G=64$. |
 | **Learning Rate (LR)** | 1e-6 – 5e-6 | Extremely low. Without a Critic to smooth updates, high LRs lead to rapid policy collapse or repetitive outputs. |
 | **KL Coefficient ($\beta$)** | 0.01 – 0.04 | Controls deviation from the SFT model. Lower values encourage longer exploration (CoT), but risk "Aha moment" dilution. |
 | **Sampling Temp ($T$)** | 0.7 – 1.0 | Must be high enough to ensure diverse responses within the group to calculate a meaningful standard deviation. |
@@ -48,11 +47,11 @@ While GRPO saves VRAM by removing the Critic, the bottleneck shifts to the **Rol
 
 | Symptom | Potential Root Cause | Solution |
 | --- | --- | --- |
-| **Zero Advantage** | All group responses have identical rewards (all pass or all fail). | 1. Increase group size .<br>2. Increase sampling temperature .<br>3. Check if the prompt is too easy or too hard. |
-| **Mode Collapse / Repetitive CoT** | Learning rate is too high or KL penalty () is too low. | 1. Increase **** to force the model back to the SFT distribution.<br>2. Reduce Learning Rate. |
+| **Zero Advantage** | All group responses have identical rewards (all pass or all fail). | 1. Increase group size $G$.<br>2. Increase sampling temperature $T$.<br>3. Check if the prompt is too easy or too hard. |
+| **Mode Collapse / Repetitive CoT** | Learning rate is too high or KL penalty ($\beta$) is too low. | 1. Increase **$\beta$** to force the model back to the SFT distribution.<br>2. Reduce Learning Rate. |
 | **Language Mixing / Poor Readability** | Lack of "Cold-start" SFT or insufficient CoT format rewards. | 1. Ensure the model underwent high-quality SFT on reasoning data first.<br>2. Add a specific "Format Reward" for sticking to the correct language. |
 | **Reward Hacking (Longer is Better)** | RM favors length over quality (Verbosity Bias). | 1. Introduce a **Length Penalty** in the reward function.<br>2. Cap `max_completion_length`. |
-| **Stagnant Training** | Advantage variance is too high. | 1. Increase  for a more stable baseline.<br>2. Implement Advantage Normalization across the entire global batch rather than just the group. |
+| **Stagnant Training** | Advantage variance is too high. | 1. Increase $G$ for a more stable baseline.<br>2. Implement Advantage Normalization across the entire global batch rather than just the group. |
 
 ## 5. Advanced Expert Tips
 

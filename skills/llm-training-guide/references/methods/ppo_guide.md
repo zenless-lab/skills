@@ -13,8 +13,8 @@ PPO aligns a model by maximizing expected rewards from a Reward Model (RM) while
 * **The 4-Model System**:
 Standard PPO RLHF requires maintaining four distinct models in memory:
 
-1. **Actor (Policy)**: The model being trained ().
-2. **Critic (Value)**: Estimates the expected return () to calculate advantages.
+1. **Actor (Policy)**: The model being trained ($\pi_{\theta}$).
+2. **Critic (Value)**: Estimates the expected return ($V_{\phi}$) to calculate advantages.
 3. **Reference (SFT)**: Frozen copy used to calculate KL-divergence penalties.
 4. **Reward Model**: Frozen model that provides scalar scores for completions.
 
@@ -50,7 +50,7 @@ The primary bottleneck in PPO is the memory overhead of the 4-model architecture
 
 | Symptom | Potential Root Cause | Solution |
 | --- | --- | --- |
-| **Reward Hacking** | Reward Model (RM) is "fooled" by length or repetitive patterns. | 1. Increase KL penalty ().<br>2. Add rule-based reward shaping (e.g., penalty for length/loops). |
+| **Reward Hacking** | Reward Model (RM) is "fooled" by length or repetitive patterns. | 1. Increase KL penalty ($\beta$).<br>2. Add rule-based reward shaping (e.g., penalty for length/loops). |
 | **KL Divergence Explosion** | Model deviates too fast; LR is too high. | 1. Lower Actor LR.<br>2. Increase KL penalty.<br>3. Ensure Actor/Ref start with identical weights. |
 | **Value Loss is Flat** | Critic is not learning or is poorly initialized. | 1. Increase Critic LR.<br>2. Pre-train the Critic on the RM dataset before starting RL. |
 | **OOM (Out of Memory)** | 4 models exceed GPU memory. | 1. Use Gradient Checkpointing.<br>2. Enable ZeRO-3 or FSDP.<br>3. Reduce `max_prompt_length`. |
