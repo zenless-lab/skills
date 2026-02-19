@@ -38,7 +38,7 @@ DPO training is resource-intensive as it requires keeping two models (Policy and
 
 | Symptom | Potential Root Cause | Solution |
 | --- | --- | --- |
-| **Model Outputs Gibberish** | Model drifted too far from Reference; LR too high. | Increase **** to 0.1 or 0.2; reduce Learning Rate; check if the Chat Template is identical to SFT. |
+| **Model Outputs Gibberish** | Model drifted too far from Reference; LR too high. | Increase $\beta$ to 0.1 or 0.2; reduce Learning Rate; check if the Chat Template is identical to SFT. |
 | **"Reward Hacking" / High Accuracy, Bad Quality** | Model found a shortcut (e.g., responding with specific punctuation or length). | Inspect "Chosen" vs "Rejected" data for length bias; reduce training epochs. |
 | **Extreme Verbosity** | Preference data favors longer answers regardless of quality. | Use **Length-Normalized DPO** or introduce a penalty for responses exceeding a certain length ratio relative to the prompt. |
 | **Loss is Flat / No Learning** | Chosen/Rejected samples are too similar; LR too low. | Verify data labels; ensure the model generates different log-probs for the pair; increase LR slightly. |
