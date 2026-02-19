@@ -11,7 +11,7 @@ DPO is designed to fine-tune a model to prefer "chosen" responses over "rejected
   * **Simplicity**: Eliminates the need to train a separate Reward Model (RM) and the instability of Proximal Policy Optimization (PPO).
 
 * **Mathematical Principle**:
-The DPO loss function uses a reference model ($\pi_{ref}$) to constrain the policy ($\pi_{\theta}$). It increases the probability of the chosen response $y_w$ relative to the rejected response , scaled by a temperature parameter $\beta$. This implicitly enforces a KL-divergence penalty to ensure the model does not deviate too far from the original SFT distribution.
+The DPO loss function uses a reference model ($\pi_{ref}$) to constrain the policy ($\pi_{\theta}$). It increases the probability of the chosen response $y_w$ relative to the rejected response $y_l$, scaled by a temperature parameter $\beta$. This implicitly enforces a KL-divergence penalty to ensure the model does not deviate too far from the original SFT distribution.
 
 ## 2. Key Hyperparameter Guidelines
 
