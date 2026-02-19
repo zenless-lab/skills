@@ -30,7 +30,7 @@ $$
 
 * **Grad**: Gradients (usually same as weight precision, e.g., 2 bytes for FP16).
 * **Opt**: Optimizer states.
-* **Standard AdamW**: 12 bytes (Master Weights [4] + Momentum [4] + Variance [4]).
+  * **Standard AdamW**: 12 bytes (Master Weights [4] + Momentum [4] + Variance [4]).
   * **8-bit AdamW**: 2 bytes (Quantized states).
   * **Adam-mini**: ~4-5 bytes (Block-sharded states).
   * **SGD**: 0 bytes (or 4 bytes with momentum).
@@ -139,4 +139,5 @@ $$
 * **ZeRO-2**: Shards Optimizer States + Gradients.
 * **ZeRO-3**: Shards Optimizer States + Gradients + Model Parameters.
 * **ZeRO-Infinity**: Offloads all states and parameters to NVMe, theoretically supporting trillion-parameter models on a single GPU.
+
 
