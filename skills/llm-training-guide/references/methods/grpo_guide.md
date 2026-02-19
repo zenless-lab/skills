@@ -10,7 +10,7 @@ GRPO is an on-policy reinforcement learning algorithm designed to solve the memo
 * In PPO, a Critic (Value Model) of similar size to the Policy model is required to estimate the baseline, effectively doubling VRAM usage.
 * GRPO samples a group of $G$ responses for each prompt and uses the mean and standard deviation of the group's rewards to estimate the advantage.
 * **Mathematical Principle**:
-The advantage for the -th completion in a group is calculated as: $$A_i = \frac{r_i - \text{mean}(r_1, r_2, \dots, r_G)}{\text{std}(r_1, r_2, \dots, r_G) + \epsilon}$$ This treats the current group as a dynamic baseline, effectively transforming the RL task into a comparative ranking problem within the sampled set.
+The advantage for the $i$-th completion in a group is calculated as: $$A_i = \frac{r_i - \text{mean}(r_1, r_2, \dots, r_G)}{\text{std}(r_1, r_2, \dots, r_G) + \epsilon}$$ This treats the current group as a dynamic baseline, effectively transforming the RL task into a comparative ranking problem within the sampled set.
 * **Primary Use Case**: Especially effective for **Reinforcement Learning with Verifiable Rewards (RLVR)**, where objective correctness (e.g., math, code) can be checked via rule-based verifiers or unit tests.
 
 ## 2. Key Hyperparameter Guidelines
