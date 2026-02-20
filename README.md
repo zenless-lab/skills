@@ -23,7 +23,7 @@ This repository is designed for progressive loading: each skill keeps core guida
 ```text
 .
 ├── skills/
-│   ├── hugging-face-llm-coding/
+│   ├── huggingface-accelerate-guide/
 │   ├── llm-training-guide/
 │   ├── proto-schema-expert/
 │   ├── python-standards/
@@ -38,7 +38,7 @@ This repository is designed for progressive loading: each skill keeps core guida
 
 | Skill | Purpose | Key assets |
 |---|---|---|
-| `hugging-face-llm-coding` | Implement and modify LLM workflows in the Hugging Face ecosystem with package-manager-aware setup and method-specific templates. | Inspection scripts, training templates, schema/reliability/VRAM references |
+| `huggingface-accelerate-guide` | A specialized assistant for using Hugging Face Accelerate for distributed training, inference, and large model handling. | Training templates, inference scripts, troubleshooting tools |
 | `llm-training-guide` | Reference-first guide for strategy, troubleshooting, alignment method selection, and training-health metrics. | Method deep dives, hardware + VRAM docs, metric taxonomy |
 | `python-standards` | Apply project-aware Python conventions with PEP 8-first style and progressive reference loading. | Discovery/style/docstring/layout references |
 | `proto-schema-expert` | Draft, review, and explain Protobuf schemas across Editions/Proto3/Proto2. | Type reference, style guide, version-specific docs |
@@ -77,7 +77,8 @@ Each skill should typically follow:
 
 - `SKILL.md`: concise workflow + routing guidance
 - `references/`: heavy documentation and deep dives
-- `scripts/`: executable helpers/templates (when needed)
+- `assets/`: executable templates (when needed)
+- `scripts/`: executable helpers (when needed)
 
 ### Authoring principles
 
