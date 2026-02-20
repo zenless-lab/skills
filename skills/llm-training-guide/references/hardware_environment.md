@@ -102,9 +102,9 @@ sysctl -n machdep.cpu.brand_string
 
 ```
 
-**2. macOS Version (Metal Support):**
+**2. macOS Version (MPS/Metal Support):**
 
-Metal 3 requires macOS 13 (Ventura) or later.
+For PyTorch MPS, macOS 12.3+ is required. Newer Metal features may require later macOS versions.
 
 ```bash
 sw_vers -productVersion

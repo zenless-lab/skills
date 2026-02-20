@@ -1,6 +1,6 @@
 # Update-to-Weight Ratio Reference Manual
 
-Update-to-Weight Ratio (U/W Ratio) is a scale-invariant metric that quantifies the "relative step size" of parameter updates. It serves as the primary standard for validating Learning Rate (LR) configuration and monitoring optimization health in LLMs.
+Update-to-Weight Ratio (U/W Ratio) is a scale-invariant metric that quantifies the "relative step size" of parameter updates. It is a practical indicator for validating Learning Rate (LR) configuration and monitoring optimization health in LLMs.
 
 ## 1. Principles and Definition
 
@@ -54,20 +54,20 @@ It is crucial to differentiate between layer types:
 * **LayerNorm**: Ratios can be volatile; often excluded from aggregate statistics.
 * **Attention/FFN**: The primary indicators for training stability.
 
-## 3. Diagnostic Thresholds
+## 3. Diagnostic Thresholds (Heuristics)
 
-The U/W Ratio provides a "Health Check" for the Learning Rate.
+The U/W Ratio provides a practical "health check" for the learning rate. Exact ranges vary by model family, optimizer details, data curriculum, and training stage.
 
 | Status | Numerical Range | Diagnosis | Root Cause | Actionable Strategy |
 | :--- | :--- | :--- | :--- | :--- |
-| **Critical High** | $> 10^{-2}$ (1%) | **Unstable / Explosion Risk** | Learning Rate (LR) is too high; Gradient Clipping failed; Initialization variance too low. | **Decrease LR**: Reduce by factor of 2-5x.<br>**Re-init**: Check if weights are initialized too small ($\sigma$ too low). |
-| **Optimal** | $\approx 10^{-3}$ | **Healthy Training** | "Golden Ratio". Parameters update by ~0.1% per step. | **Maintain**: The configuration is likely optimal. |
-| **Stagnant** | $< 10^{-4}$ | **Slow Convergence** | LR too low; Gradient Vanishing in deep layers. | **Increase LR**: Aggressively scale up LR.<br>**Check Architecture**: Verify Pre-LN or residual scaling. |
-| **Sudden Spike** | Jump $> 10x$ | **Instability Event** | "Bad Data" batch; Loss landscape curvature singularity. | **Rollback**: Revert checkpoint and skip batch.<br>**AdaGC**: Enable adaptive gradient clipping. |
+| **Critical High** | $> 10^{-2}$ (1%) | **High Instability Risk** | LR too high; clipping ineffective; initialization scale mismatch. | **Decrease LR**: Reduce by factor of 2-5x.<br>**Recheck Init**: Verify initialization variance and normalization. |
+| **Reference Zone** | around $10^{-3}$ | **Often Stable in Practice** | Relative update size is typically moderate for many transformer runs. | **Maintain/Track**: Keep monitoring trend rather than one-step value. |
+| **Very Low** | $< 10^{-4}$ | **Possible Slow Progress** | LR too low; effective gradient too weak in deeper blocks. | **Increase LR Carefully**: Scale up gradually and re-evaluate validation metrics. |
+| **Sudden Spike** | Jump $> 10x$ | **Instability Event** | Outlier batch, transient numerical issue, or abrupt curvature shift. | **Triage**: Inspect batch/logs, then decide whether to skip step or roll back. |
 
 ## 4. Application in Scaling ($\mu P$)
 
 In the context of **Maximal Update Parametrization ($\mu P$)**, the U/W Ratio is the key observable for transferring hyperparameters from small proxy models to large target models.
 
-* **Transfer Logic**: If a 1B model trains stably with a U/W ratio of $10^{-3}$, the 100B model should be initialized and configured (LR scaled by width) to maintain this exact same $10^{-3}$ ratio.
-* **Verification**: During the first 100 steps of a large run, if the U/W ratio deviates significantly from the small model's ratio, the initialization or LR scaling formula is incorrect.
+* **Transfer Logic**: If a 1B proxy model trains stably near a specific U/W range (often around $10^{-3}$), the larger model can target a similar range after width-aware scaling.
+* **Verification**: During early steps of a large run, major deviation from the proxy range is a useful signal to re-check initialization or LR scaling.

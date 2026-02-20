@@ -7,8 +7,8 @@ This guide provides technical specifications and operational insights for implem
 PPO aligns a model by maximizing expected rewards from a Reward Model (RM) while ensuring the updated policy does not deviate too far from the initial SFT distribution.
 
 * **Core Advantages**:
-* **Exploration**: As an on-policy algorithm, PPO explores the solution space beyond the fixed SFT data, which is critical for reasoning and coding tasks.
-* **Stability**: The clipped surrogate objective prevents large, destructive updates that characterize vanilla policy gradient methods.
+  * **Exploration**: As an on-policy algorithm, PPO explores the solution space beyond the fixed SFT data, which is critical for reasoning and coding tasks.
+  * **Stability**: The clipped surrogate objective prevents large, destructive updates that characterize vanilla policy gradient methods.
 
 * **The 4-Model System**:
 Standard PPO RLHF requires maintaining four distinct models in memory:

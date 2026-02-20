@@ -22,7 +22,7 @@ $$
 \|W\|_2 = \Theta\left(\sqrt{\frac{d_{out}}{d_{in}}}\right)
 $$
 
-* **Physical Meaning**: This scaling ensures that activations remains at a constant $\Theta(1)$ scale regardless of model width, preventing signal explosions or vanishing in deep architectures.
+* **Physical Meaning**: This scaling ensures that activations remain at a constant $\Theta(1)$ scale regardless of model width, preventing signal explosions or vanishing in deep architectures.
 
 ## 2. Low-Overhead Implementation
 

@@ -11,7 +11,7 @@ DPO is designed to fine-tune a model to prefer "chosen" responses over "rejected
   * **Simplicity**: Eliminates the need to train a separate Reward Model (RM) and the instability of Proximal Policy Optimization (PPO).
 
 * **Mathematical Principle**:
-The DPO loss function uses a reference model ($\pi_{ref}$) to constrain the policy ($\pi_{\theta}$). It increases the probability of the chosen response $y_w$ relative to the rejected response $y_l$, scaled by a temperature parameter $\beta$. This implicitly enforces a KL-divergence penalty to ensure the model does not deviate too far from the original SFT distribution.
+The DPO loss function uses a reference model ($\pi_{ref}$) to constrain the policy ($\pi_{\theta}$). It increases the probability of the chosen response relative to the rejected response, scaled by a temperature parameter $\beta$. This implicitly enforces a KL-divergence penalty to ensure the model does not deviate too far from the original SFT distribution.
 
 ## 2. Key Hyperparameter Guidelines
 
@@ -38,7 +38,7 @@ DPO training is resource-intensive as it requires keeping two models (Policy and
 
 | Symptom | Potential Root Cause | Solution |
 | --- | --- | --- |
-| **Model Outputs Gibberish** | Model drifted too far from Reference; LR too high. | Increase $\beta$ to 0.1 or 0.2; reduce Learning Rate; check if the Chat Template is identical to SFT. |
+| **Model Outputs Gibberish** | Model drifted too far from Reference; LR too high. | Increase **$\beta$** to 0.1 or 0.2; reduce Learning Rate; check if the Chat Template is identical to SFT. |
 | **"Reward Hacking" / High Accuracy, Bad Quality** | Model found a shortcut (e.g., responding with specific punctuation or length). | Inspect "Chosen" vs "Rejected" data for length bias; reduce training epochs. |
 | **Extreme Verbosity** | Preference data favors longer answers regardless of quality. | Use **Length-Normalized DPO** or introduce a penalty for responses exceeding a certain length ratio relative to the prompt. |
 | **Loss is Flat / No Learning** | Chosen/Rejected samples are too similar; LR too low. | Verify data labels; ensure the model generates different log-probs for the pair; increase LR slightly. |

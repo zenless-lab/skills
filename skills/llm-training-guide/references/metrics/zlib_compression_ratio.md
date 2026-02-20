@@ -9,7 +9,7 @@ The metric differentiates between "simple text" and "memorized text" by comparin
 * **Core Assumption:** Simple text (e.g., repeating characters) is easily compressed by both Zlib and LLMs.
 * **Memorization Signature:** High-complexity text (hard for Zlib to compress) that yields an abnormally low model Loss strongly indicates verbatim memorization during training.
 
-$$ \text{Score} = \frac{\text{Model Log-Likelihood}}{\text{Zlib Compression Entropy}} $$
+$$ \text{Score} = \frac{\text{Model NLL}}{\text{Zlib Compression Entropy}} $$
 
 This ratio normalizes the model's confidence, eliminating biases caused by inherent text simplicity.
 

@@ -1,6 +1,6 @@
 # Loss Dispersion Reference Manual
 
-Loss Dispersion is a critical system-level diagnostic indicator for distributed training. It quantifies the spatial variance of local loss values across different compute nodes (Workers/GPUs) at the same training step, identifying "Silent Inconsistency" that remains invisible in globally aggregated loss curves.
+Loss Dispersion is a practical system-level diagnostic indicator for distributed training. It quantifies the spatial variance of local loss values across different compute nodes (Workers/GPUs) at the same training step, helping detect "Silent Inconsistency" that may be hidden by globally aggregated loss curves.
 
 ## 1. Principles and Mathematical Definition
 
@@ -12,8 +12,8 @@ For $N$ workers at step $t$, let $\ell_i^{(t)}$ be the local loss of worker $i$,
 
 $$ D_{\text{loss}}^{(t)} = \sqrt{\frac{1}{N}\sum_{i=1}^{N}\left(\ell_{i}^{(t)}-\bar{\ell}^{(t)}\right)^{2}} $$
 
-* **Low Dispersion**: Indicates that all GPUs are encountering similar data difficulty and signal strength. The training system is in a coherent state.
-* **High Dispersion**: Indicates that different GPUs are attempting to pull the model in divergent directions. This reduces optimization efficiency and often signals systemic faults in randomness or data sharding.
+* **Low Dispersion**: Usually means workers are seeing comparable sample difficulty and gradient signal.
+* **High Dispersion**: Often means workers are receiving systematically different samples or experiencing inconsistent runtime behavior.
 
 ## 2. Low-Overhead Implementation
 
@@ -21,7 +21,7 @@ Monitoring this metric is non-intrusive and requires minimal communication bandw
 
 ### PyTorch Implementation Pattern
 
-The metric must be collected after the forward pass but before the global loss reduction/backward pass.
+The metric is usually collected from per-rank local losses before any cross-rank averaging that would hide rank-level differences.
 
 ```python
 import torch
@@ -60,7 +60,7 @@ def compute_loss_dispersion(local_loss_scalar):
 
 ### 3.1 Detecting Silent Inconsistency
 
-Silent Inconsistency occurs when the global loss curve appears healthy, but individual workers have diverged due to misaligned optimization dynamics. Loss dispersion is the primary sensor for detecting this hidden efficiency loss.
+Silent Inconsistency occurs when the global loss curve appears healthy, but individual workers drift due to misaligned optimization dynamics. Loss dispersion is one effective sensor for this hidden efficiency loss.
 
 ### 3.2 Data Pipeline Validation
 
@@ -83,4 +83,4 @@ In Supervised Fine-Tuning (SFT), high dispersion suggests that data is not suffi
 
 While **Global Loss** measures "what the model has learned," **Loss Dispersion** measures "how well the cluster is collaborating."
 
-**Critical Warning**: If Global Loss is decreasing but Loss Dispersion is rising, it is a catastrophic signal. It indicates that the training has degraded into a "random walk of averages," and compute resources are being wasted. Training should be paused to audit distributed consistency and data pipeline sharding.
+**Warning**: If global loss decreases while loss dispersion keeps rising, treat it as a strong warning. This often means training efficiency is degrading; audit distributed consistency and data sharding before continuing long runs.

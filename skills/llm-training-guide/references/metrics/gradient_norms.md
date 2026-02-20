@@ -21,7 +21,7 @@ Calculating the global norm requires a global synchronization (All-Reduce) acros
 
 ### 2.1 Zero-Overhead Monitoring Strategy
 
-In production environments, gradient clipping is almost always mandatory. Most frameworks (like PyTorch) compute the norm internally as part of the clipping process. You should retrieve this value instead of recalculating it.
+In many large-model production environments, gradient clipping is commonly enabled. Most frameworks (like PyTorch) compute the norm internally as part of the clipping process. Prefer reusing that value instead of recalculating it.
 
 ```python
 # Recommended Implementation: Zero extra cost
