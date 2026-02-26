@@ -6,16 +6,16 @@ description: Comprehensive master guide for designing, creating, editing, updati
 
 Welcome to the Agent Skill Manager. This skill outlines the core philosophy and comprehensive guiding principles for building, editing, and maintaining high-quality, efficient, and modular Agent Skills.
 
-## 🧠 Core Philosophy: Progressive Disclosure
+## 🧠 Core Philosophy: Progressive Disclosure & File Splitting
 
-The most critical principle of an Agent Skill is **Progressive Disclosure**. You must manage the agent's context window efficiently:
+When creating or refactoring a skill, your most critical responsibility is designing for **Progressive Disclosure**. You must proactively split content into multiple files to manage the target agent's context window efficiently. Do not overload the main skill file.
 
-1. **Discovery**: Only `name` and `description` (YAML frontmatter) are loaded at startup. Keep them keyword-rich and highly descriptive.
-2. **Activation**: This `SKILL.md` file is read upon task activation. It must remain under 500 lines and focus on *what* to do and *general rules*.
-3. **Execution**: Detailed step-by-step guides, complex templates, and executable code MUST be offloaded to subdirectories and loaded *only on demand*.
-   * **`references/`**: Detailed technical docs, step-by-step workflows, API references, or long-form domain instructions. Read only when specific guidance is needed.
-   * **`assets/`**: Static resources like document templates, config templates, or data schemas.
-   * **`scripts/`**: Executable code (e.g., Python or Bash). Scripts must be self-contained, provide clear error messages, and handle edge cases gracefully.
+1. **Discovery**: Only the `name` and `description` (YAML frontmatter) are loaded at the target agent's startup. Keep them keyword-rich and highly descriptive so the agent knows exactly when to use the skill.
+2. **Activation**: The newly created `SKILL.md` file is read in its entirety upon task activation. It must remain strictly under 500 lines. Focus this file only on *what* the skill does, high-level rules, and providing a map to auxiliary files.
+3. **Execution (File Splitting)**: You must structurally split detailed step-by-step guides, complex templates, and executable code into subdirectories so the target agent loads them *only on demand*:
+   * **`references/`**: Extract detailed technical docs, step-by-step workflows, API references, or long-form domain instructions into highly focused, small markdown files here.
+   * **`assets/`**: Isolate static resources like document templates, config templates, or data schemas here.
+   * **`scripts/`**: Move executable code (e.g., Python or Bash) here. Scripts must be self-contained, provide clear error messages, and handle edge cases gracefully.
 
 ## 🏗️ Structural Principles
 
@@ -33,7 +33,7 @@ Every Agent Skill you create or refactor must adhere to these architectural stan
   * Any Python scripts placed in the `scripts/` directory MUST follow the PEP 723 inline script metadata standard.
   * **CRITICAL**: If you generate a new skill that contains executable scripts, you MUST explicitly state in the generated `SKILL.md` that the agent should prefer using `uvx scripts/your_script.py` to ensure dependencies are automatically handled.
 
-## 🌐 Official Specifications (On-Demand)
+## 🌐 Official Specifications
 
 If you need to consult the raw official definitions and specs during creation or validation, access the following links:
 * [Home](https://agentskills.io/home.md)
@@ -41,7 +41,7 @@ If you need to consult the raw official definitions and specs during creation or
 * [Specification](https://agentskills.io/specification.md)
 * [Integrate skills](https://agentskills.io/integrate-skills.md)
 
-## 📚 Detailed Workflows & Guidelines (Load on Demand)
+## 📚 Detailed Workflows & Guidelines
 
 For specific execution steps and constraint checks, read the following files *only when performing a specific task*:
 
