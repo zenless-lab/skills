@@ -18,4 +18,4 @@ The `references/` directory stores auxiliary documents loaded strictly on-demand
   * ✅ **Valid**: `Please see the [API Guide](references/api-guide.md)`
   * ✅ **Valid**: `Run the parser: scripts/parser.py`
   * ❌ **Invalid**: `See /Users/name/skills/my-skill/references/api-guide.md`
-* **Flat Hierarchy**: Keep all files at the first level of the `references/` directory. Deeply nested structures (e.g., `references/docs/v1/api.md`) are highly discouraged.
+* **Shallow Hierarchy**: Prefer a flat or single-level structure inside `references/` (e.g., `references/layouts/fastapi.md`). Avoid deeply nested trees (e.g., `references/docs/v1/api.md`), which are highly discouraged.
