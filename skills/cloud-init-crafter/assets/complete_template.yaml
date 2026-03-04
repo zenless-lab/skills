@@ -1,0 +1,59 @@
+#cloud-config
+# Complete Template: Advanced orchestration baseline demonstrating multi-module integration including disk setup, file writing, and command execution.
+
+# 1. Packages and Updates
+package_update: true
+package_upgrade: true
+packages:
+  - curl
+  - git
+  - htop
+
+# 2. Hostname and Network Environment
+hostname: production-app-01
+fqdn: production-app-01.example.com
+manage_etc_hosts: true
+timezone: UTC
+locale: en_US.UTF-8
+
+# 3. Security and User Access
+ssh_pwauth: false
+users:
+  - default
+  - name: devops
+    gecos: DevOps Engineer
+    groups: sudo, docker
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    lock_passwd: true
+    ssh_authorized_keys:
+      - ssh-rsa <YOUR-SSH-PUBLIC-KEY-HERE>
+
+# 4. Storage Configuration (Example: Partition, format, and mount a new data disk /dev/sdb)
+disk_setup:
+  /dev/sdb:
+    table_type: gpt
+    layout: True
+    overwrite: False
+fs_setup:
+  - label: data_volume
+    filesystem: ext4
+    device: /dev/sdb1
+mounts:
+  - [ /dev/sdb1, /mnt/data, ext4, "defaults,noatime", "0", "2" ]
+
+# 5. File Writing (System configuration)
+write_files:
+  - path: /etc/sysctl.d/99-custom-network.conf
+    owner: root:root
+    permissions: '0644'
+    content: |
+      net.ipv4.ip_forward=1
+      net.core.somaxconn=1024
+
+# 6. Post-initialization Commands (Ensuring idempotency)
+runcmd:
+  # Apply the newly written sysctl configuration
+  - sysctl --system
+  # Idempotently write to the Message of the Day (MOTD)
+  - [ sh, -c, "grep -q 'Production' /etc/motd || echo 'Welcome to Production' >> /etc/motd" ]
