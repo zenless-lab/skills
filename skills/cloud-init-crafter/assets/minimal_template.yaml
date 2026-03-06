@@ -5,7 +5,7 @@
 ssh_pwauth: false
 
 # Define the default user and inject the SSH public key
-users:
-  - name: default
-    ssh_authorized_keys:
-      - ssh-rsa <YOUR-SSH-PUBLIC-KEY-HERE>
+user:
+  name: default
+  ssh_authorized_keys:
+    - ssh-rsa <YOUR-SSH-PUBLIC-KEY-HERE>

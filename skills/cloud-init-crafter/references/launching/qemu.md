@@ -37,7 +37,7 @@ On supported images, pass a URL directly via the SMBIOS serial string.
 ```bash
 qemu-system-x86_64 -m 1024 -net nic -net user \
     -hda noble-server-cloudimg-amd64.img \
-    -smbios type=1,serial=ds='nocloud;s=[http://10.0.2.2:8000/](http://10.0.2.2:8000/)'
+    -smbios type=1,serial=ds='nocloud;s=http://10.0.2.2:8000/'
 ```
 
 *Note: `10.0.2.2` is the default gateway to the host from within QEMU.*

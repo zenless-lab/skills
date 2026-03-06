@@ -17,7 +17,7 @@ users:
   - name: sysadmin
     gecos: System Administrator
     groups: sudo
-    sudo: ALL=(ALL) NOPASSWD:ALL
+    sudo: ALL=(ALL) ALL
     shell: /bin/bash
     lock_passwd: true  # Lock the password to force SSH key authentication
     ssh_authorized_keys:

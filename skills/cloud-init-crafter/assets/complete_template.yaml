@@ -23,8 +23,13 @@ users:
   - name: devops
     gecos: DevOps Engineer
     groups: sudo, docker
-    sudo: ALL=(ALL) NOPASSWD:ALL
+    sudo: ALL=(ALL) ALL
     shell: /bin/bash
+    # NOTE: Replace the placeholder below with a real hashed password, e.g. generated via:
+    #   mkpasswd --method=SHA-512
+    # or:
+    #   openssl passwd -6
+    passwd: "<PASSWORD-HASH-HERE>"
     lock_passwd: true
     ssh_authorized_keys:
       - ssh-rsa <YOUR-SSH-PUBLIC-KEY-HERE>
