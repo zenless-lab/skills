@@ -47,9 +47,11 @@
 * If x is an iterable of int values, the result is a `bytes` whose elements are those integers.
 
 ```python
-bytes("hello 😃")         # b"hello 😃"
-bytes(b"hello 😃")        # b"hello 😃"
-bytes([65, 66, 67])       # b"ABC"
+bytes("hello 😃")  # b"hello 😃"
+bytes(b"hello 😃")  # b"hello 😃"
+bytes("hello 😃"[:-1])          # b"hello ���"
+bytes([65, 66, 67])  # b"ABC"
+bytes(65)   # error: got int, want string, bytes, or iterable of int
 ```
 
 ### dict
@@ -288,7 +290,7 @@ x.setdefault("three", 3)                # 3
 
 #### dict·update
 
-`D.update([pairs][, name=value[, ...])` makes a series of key/value insertions into dictionary D, then returns `None`.
+`D.update([pairs][, name=value[, ...]])` makes a series of key/value insertions into dictionary D, then returns `None`.
 
 ```python
 x = {}
