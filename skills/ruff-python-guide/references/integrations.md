@@ -27,20 +27,20 @@ Representative pattern:
 name: CI
 on: push
 jobs:
-	build:
-		runs-on: ubuntu-latest
-		steps:
-			- uses: actions/checkout@v4
-			- name: Install Python
-				uses: actions/setup-python@v5
-				with:
-					python-version: "3.11"
-			- name: Install dependencies
-				run: |
-					python -m pip install --upgrade pip
-					pip install ruff
-			- name: Run Ruff
-				run: ruff check --output-format=github .
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - name: Install Python
+                uses: actions/setup-python@v5
+                with:
+                    python-version: "3.11"
+            - name: Install dependencies
+                run: |
+                    python -m pip install --upgrade pip
+                    pip install ruff
+            - name: Run Ruff
+                run: ruff check --output-format=github .
 ```
 
 `--output-format=github` enables GitHub-style inline annotations in workflow output.
@@ -57,11 +57,11 @@ Minimal workflow:
 name: Ruff
 on: [push, pull_request]
 jobs:
-	ruff:
-		runs-on: ubuntu-latest
-		steps:
-			- uses: actions/checkout@v4
-			- uses: astral-sh/ruff-action@v3
+    ruff:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: astral-sh/ruff-action@v3
 ```
 
 You can also embed the action into an existing workflow as a single step:
@@ -82,10 +82,10 @@ Example customization:
 
 ```yaml
 - uses: astral-sh/ruff-action@v3
-	with:
-		version: 0.8.0
-		args: check --select B
-		src: "./src"
+    with:
+        version: 0.8.0
+        args: check --select B
+        src: "./src"
 ```
 
 Use this form when you want to pin Ruff independently of the base image or Python dependency installation logic.
@@ -100,26 +100,26 @@ Representative pattern:
 
 ```yaml
 .base_ruff:
-	stage: build
-	interruptible: true
-	image:
-		name: ghcr.io/astral-sh/ruff:0.15.6-alpine
-	before_script:
-		- cd $CI_PROJECT_DIR
-		- ruff --version
+    stage: build
+    interruptible: true
+    image:
+        name: ghcr.io/astral-sh/ruff:0.15.6-alpine
+    before_script:
+        - cd $CI_PROJECT_DIR
+        - ruff --version
 
 Ruff Check:
-	extends: .base_ruff
-	script:
-		- ruff check --output-format=gitlab --output-file=code-quality-report.json
-	artifacts:
-		reports:
-			codequality: $CI_PROJECT_DIR/code-quality-report.json
+    extends: .base_ruff
+    script:
+        - ruff check --output-format=gitlab --output-file=code-quality-report.json
+    artifacts:
+        reports:
+            codequality: $CI_PROJECT_DIR/code-quality-report.json
 
 Ruff Format:
-	extends: .base_ruff
-	script:
-		- ruff format --diff
+    extends: .base_ruff
+    script:
+        - ruff format --diff
 ```
 
 This keeps lint diagnostics machine-readable for GitLab while still checking formatting without mutating files.
@@ -136,10 +136,10 @@ Representative pattern:
 
 ```yaml
 - repo: https://github.com/astral-sh/ruff-pre-commit
-	rev: v0.15.6
-	hooks:
-		- id: ruff-check
-		- id: ruff-format
+    rev: v0.15.6
+    hooks:
+        - id: ruff-check
+        - id: ruff-format
 ```
 
 ### Enable automatic fixes
@@ -150,11 +150,11 @@ Use `--fix` on the lint hook when mutation is acceptable:
 
 ```yaml
 - repo: https://github.com/astral-sh/ruff-pre-commit
-	rev: v0.15.6
-	hooks:
-		- id: ruff-check
-			args: [--fix]
-		- id: ruff-format
+    rev: v0.15.6
+    hooks:
+        - id: ruff-check
+            args: [--fix]
+        - id: ruff-format
 ```
 
 ### Exclude notebooks
@@ -165,13 +165,13 @@ To avoid running on Jupyter Notebooks, remove `jupyter` from the accepted file t
 
 ```yaml
 - repo: https://github.com/astral-sh/ruff-pre-commit
-	rev: v0.15.6
-	hooks:
-		- id: ruff-check
-			types_or: [python, pyi]
-			args: [--fix]
-		- id: ruff-format
-			types_or: [python, pyi]
+    rev: v0.15.6
+    hooks:
+        - id: ruff-check
+            types_or: [python, pyi]
+            args: [--fix]
+        - id: ruff-format
+            types_or: [python, pyi]
 ```
 
 Operational rules:
