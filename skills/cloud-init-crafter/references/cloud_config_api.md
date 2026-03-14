@@ -1611,9 +1611,9 @@ puppet:
 
 Configure Raspberry Pi ARM interfaces and enable Raspberry Pi USB Gadget mode. This module handles ARM interface configuration for Raspberry Pi and USB Gadget setup. The USB Gadget mode will be enabled to auto-start on boot. Make sure you read the documentation on it carefully before enabling it. This only works on Raspberry Pi OS (trixie and later).
 
-**Internal name:** `cc_raspberry_pi`  
-**Module frequency:** once-per-instance  
-**Supported distros:** raspberry-pi-os  
+**Internal name:** `cc_raspberry_pi`
+**Module frequency:** once-per-instance
+**Supported distros:** raspberry-pi-os
 **Activate only on keys:** `rpi`
 
 ### Config Schema
@@ -1987,13 +1987,7 @@ salt_minion:
     role: [web]
   pkg_name: salt-minion
   pki_dir: /etc/salt/pki/minion
-  private_key: '------BEGIN PRIVATE KEY------
-
-    <key data>
-
-    ------END PRIVATE KEY-------
-
-    '
+  private_key: <private_ssh_key>
   public_key: '------BEGIN PUBLIC KEY-------
 
     <key data>
@@ -2008,8 +2002,8 @@ salt_minion:
 
 Any scripts in the `scripts/per-boot` directory on the datasource will be run every time the system boots. Scripts will be run in alphabetical order. This module does not accept any config keys.
 
-**Internal name:** `cc_scripts_per_boot`  
-**Module frequency:** always  
+**Internal name:** `cc_scripts_per_boot`
+**Module frequency:** always
 **Supported distros:** all
 
 ### Config Schema
