@@ -42,6 +42,7 @@ This repository is designed for progressive loading: each skill keeps core guida
 | `llm-training-guide` | Reference-first guide for strategy, troubleshooting, alignment method selection, and training-health metrics. | Method deep dives, hardware + VRAM docs, metric taxonomy |
 | `python-standards` | Apply project-aware Python conventions with PEP 8-first style and progressive reference loading. | Discovery/style/docstring/layout references |
 | `proto-schema-expert` | Draft, review, and explain Protobuf schemas across Editions/Proto3/Proto2. | Type reference, style guide, version-specific docs |
+| `ruff-python-guide` | Introduce, configure, integrate, and troubleshoot Ruff for Python linting and formatting workflows. | Install/config/workflow/integration/migration references |
 | `secret-leak-check` | Detect secret/privacy leakage risks across diffs, commit messages, and git identity contexts. | Detection rules, scope logic, reporting templates |
 
 ## Quick start
