@@ -28,7 +28,7 @@ def validate(skill_dir: str):
         if filepath.suffix.lower() == ".md":
             with open(filepath, "r", encoding="utf-8") as f:
                 lines = f.readlines()
-            
+
             line_count = len(lines)
             if line_count < 10:
                 log("WARNING", "Granularity", f"Reference '{filepath.name}' is very short ({line_count} lines). Merge into SKILL.md to avoid fragmentation.")

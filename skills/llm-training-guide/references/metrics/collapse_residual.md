@@ -39,14 +39,14 @@ def compute_collapse_residual(loss_history, ref_curve, progress):
     # 1. Select alignment window (e.g., between 10% and 30% progress)
     # 2. Estimate L_final (S_optimal) by minimizing MSE against reference
     # 3. Calculate residual at the current step
-    
+
     current_loss = loss_history[-1]
     # S_optimal acts as a predictor for L_final
-    S_optimal = estimate_l_final_proxy(loss_history, ref_curve) 
-    
+    S_optimal = estimate_l_final_proxy(loss_history, ref_curve)
+
     normalized_current = current_loss / S_optimal
     theoretical_value = ref_curve.interpolate(progress)
-    
+
     return normalized_current - theoretical_value
 ```
 

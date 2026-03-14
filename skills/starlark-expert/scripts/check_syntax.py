@@ -39,9 +39,9 @@ class StarlarkValidator(ast.NodeVisitor):
 def main():
     parser = argparse.ArgumentParser(description="Validate Starlark syntax using Python's AST.")
     parser.add_argument(
-        "file", 
-        nargs="?", 
-        type=argparse.FileType('r', encoding='utf-8'), 
+        "file",
+        nargs="?",
+        type=argparse.FileType('r', encoding='utf-8'),
         default=sys.stdin,
         help="Starlark (.bzl or BUILD) file to check (defaults to stdin)"
     )

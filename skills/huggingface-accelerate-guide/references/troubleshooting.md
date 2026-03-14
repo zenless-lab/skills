@@ -63,7 +63,7 @@ def training_loop(args):
     def inner_loop(batch_size):
         nonlocal accelerator
         accelerator.free_memory() # Clear lingering references
-        
+
         # Declare memory-consuming objects INSIDE the inner function
         model = get_model()
         train_dataloader = get_dataloader(batch_size)

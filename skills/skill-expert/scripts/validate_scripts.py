@@ -27,7 +27,7 @@ def validate(skill_dir: str):
         if not re.search(r"^# /// script\b.*^# ///$", content, re.MULTILINE | re.DOTALL):
             log("ERROR", "Standards", f"'{py_file.name}' is missing the PEP 723 metadata block. This is mandatory for generated Python scripts.")
             errors += 1
-        
+
         # Advisory: Avoid blocking interactions
         if re.search(r"\binput\s*\(", content):
             log("WARNING", "Execution", f"'{py_file.name}' contains 'input()'. Scripts should generally be non-blocking for Agent execution.")

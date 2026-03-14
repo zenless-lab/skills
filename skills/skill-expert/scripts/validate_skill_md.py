@@ -33,7 +33,7 @@ def validate(skill_dir: str):
     if not match:
         log("ERROR", "Frontmatter", "Missing or malformed YAML frontmatter.")
         sys.exit(1)
-    
+
     try:
         metadata = yaml.safe_load(match.group(1)) or {}
     except yaml.YAMLError as e:
@@ -56,7 +56,7 @@ def validate(skill_dir: str):
         if not re.match(r"^[a-z0-9]+(-[a-z0-9]+)*$", name):
             log("ERROR", "Frontmatter", "'name' has invalid characters or consecutive/leading/trailing hyphens.")
             errors += 1
-        
+
         if name != skill_name_dir:
             log("ERROR", "Structure", f"'name' ('{name}') does not match folder name ('{skill_name_dir}').")
             errors += 1

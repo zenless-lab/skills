@@ -26,7 +26,7 @@ In frameworks like PyTorch, utilize DDP communication hooks (e.g., `register_com
 ```python
 # Implementation Logic:
 # 1. Intercept: Access local gradients before All-Reduce.
-# 2. Project/Sample: To reduce communication overhead, monitor only critical layers 
+# 2. Project/Sample: To reduce communication overhead, monitor only critical layers
 #    (e.g., Embedding or LM Head) or use random projections to 1024D.
 # 3. Aggregate: Perform a lightweight all_gather of local norms/unit vectors.
 # 4. Compute: Calculate the mean pair-wise cosine similarity on the master node.

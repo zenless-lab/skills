@@ -35,20 +35,20 @@ def compute_loss_dispersion(local_loss_scalar):
     """
     if not dist.is_initialized():
         return 0.0
-        
+
     world_size = dist.get_world_size()
     # Placeholder for gathering scalars from all ranks
     gathered_losses = [torch.zeros(1, device=local_loss_scalar.device) for _ in range(world_size)]
-    
+
     # Efficiently aggregate only the scalar loss values
     dist.all_gather(gathered_losses, local_loss_scalar.detach())
-    
+
     # Calculate statistics on Rank 0
     if dist.get_rank() == 0:
         loss_tensor = torch.cat(gathered_losses)
         std_dev = torch.std(loss_tensor).item()
         loss_range = (torch.max(loss_tensor) - torch.min(loss_tensor)).item()
-        
+
         # Log to telemetry
         logger.log({
             "sys/loss_dispersion_std": std_dev,

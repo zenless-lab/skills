@@ -25,22 +25,22 @@ To monitor this without significant overhead, compute it periodically (e.g., eve
 
 ```python
 def log_update_ratio(model, optimizer, scheduler):
-    # Note: accurate calculation requires accessing the *actual* step 
+    # Note: accurate calculation requires accessing the *actual* step
     # applied by the optimizer, not just grad * lr
-    
+
     for name, param in model.named_parameters():
         if param.grad is None: continue
-        
+
         # Approximate step for AdamW (simplified)
         # Real implementation should read optimizer.state[param]
         lr = scheduler.get_last_lr()[0]
         update_approx = lr * param.grad # This is a proxy for SGD; Adam differs
-        
+
         param_norm = param.data.norm(2)
         update_norm = update_approx.norm(2)
-        
+
         ratio = update_norm / (param_norm + 1e-9)
-        
+
         # Log critical layers (Embeddings, Final Layer)
         if "embed" in name or "layers.0" in name:
             logger.log({f"ratios/{name}": ratio.item()})

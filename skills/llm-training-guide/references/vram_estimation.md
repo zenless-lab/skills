@@ -139,5 +139,3 @@ $$
 * **ZeRO-2**: Shards Optimizer States + Gradients.
 * **ZeRO-3**: Shards Optimizer States + Gradients + Model Parameters.
 * **ZeRO-Infinity**: Offloads all states and parameters to NVMe, theoretically supporting trillion-parameter models on a single GPU.
-
-

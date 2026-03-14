@@ -43,16 +43,16 @@ def calculate_singular_entropy(weight_matrix):
     # 1. SVD
     # Note: Use float32 to avoid underflow in singular values
     _, S, _ = torch.linalg.svd(weight_matrix.float(), full_matrices=False)
-    
+
     # 2. Normalize to probability distribution
     S_norm = S / (S.sum() + 1e-12)
-    
+
     # 3. Calculate KL Divergence from Uniform
     # D_KL(P || U) = log(N) - H(P)
     r = S_norm.numel()
     entropy = -torch.sum(S_norm * torch.log(S_norm + 1e-12))
     kl_div = torch.log(torch.tensor(r)) - entropy
-    
+
     return kl_div.item()
 ```
 

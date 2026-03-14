@@ -17,7 +17,7 @@ for batch in dataloader:
     # 2. Wrap the forward/backward pass in the accumulate context
     with accelerator.accumulate(model):
         ... # Forward pass and loss calculation
-        
+
         # 3. Accelerate automatically scales the loss and handles syncs
         accelerator.backward(loss)
         optimizer.step()
@@ -37,24 +37,24 @@ You must manually handle the accumulation logic and token counting. Do **not** u
 ...
 for update_step in range(total_updates):
     ... # Load `gradient_accumulation_steps` batches into `batch_samples` list
-    
+
     # 1. Gather total non-padded tokens across ALL devices for the full accumulated batch
     local_num_items = sum([(b["labels"].ne(-100)).sum() for b in batch_samples])
     total_items = accelerator.gather(local_num_items).sum().item()
-    
+
     for i, batch in enumerate(batch_samples):
         # 2. Disable sync for all but the last micro-batch to prevent slowdowns
         ctx = model.no_sync if i < len(batch_samples) - 1 else contextlib.nullcontext
-        
+
         with ctx():
             ... # Forward pass
             loss = criterion(outputs, batch["labels"]) # Note: criterion reduction="sum"
-            
-            # 3. Scale loss by num_processes and gradient_accumulation_steps, 
+
+            # 3. Scale loss by num_processes and gradient_accumulation_steps,
             # then divide by the true total number of non-padded tokens
             loss = (loss * gradient_accumulation_steps * accelerator.num_processes) / total_items
             accelerator.backward(loss)
-            
+
     optimizer.step()
     ... # Scheduler step and zero_grad
 ```

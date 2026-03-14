@@ -48,10 +48,10 @@ def calculate_alpha_hill(weight_tensor, tail_fraction=0.1):
     lambda_k = tail_evals[-1]
     # alpha = 1 + k / sum(ln(lambda_i / lambda_k))
     log_sum = torch.log(tail_evals / (lambda_k + 1e-10)).sum()
-    
+
     if log_sum <= 0:
         return 10.0 # Represents a random/non-power-law state
-        
+
     alpha = 1.0 + k / log_sum.item()
     return alpha
 ```

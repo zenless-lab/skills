@@ -21,8 +21,8 @@ with init_empty_weights():
 
 # 2. Load and dispatch weights
 model = load_checkpoint_and_dispatch(
-    model, 
-    checkpoint="path/to/checkpoint", 
+    model,
+    checkpoint="path/to/checkpoint",
     device_map="auto" # Automatically fills GPU -> CPU -> Disk
 )
 
@@ -51,8 +51,8 @@ If certain layers (like Transformer blocks) shouldn't be split across different 
 
 ```python
 model = load_checkpoint_and_dispatch(
-    model, 
-    checkpoint="path/to/checkpoint", 
+    model,
+    checkpoint="path/to/checkpoint",
     device_map="auto",
     no_split_module_classes=["GPT2Block"] # Prevent splitting these blocks
 )
@@ -76,8 +76,8 @@ import torch
 
 # Automatically dispatch weights and use half-precision to save more memory
 model = AutoModelForSeq2SeqLM.from_pretrained(
-    "bigscience/T0pp", 
-    device_map="auto", 
+    "bigscience/T0pp",
+    device_map="auto",
     torch_dtype=torch.float16
 )
 ```

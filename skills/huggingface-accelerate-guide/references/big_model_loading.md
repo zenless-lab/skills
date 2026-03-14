@@ -19,9 +19,9 @@ with init_empty_weights():
 
 # 3. Load weights and automatically distribute them
 model = load_checkpoint_and_dispatch(
-    model, 
-    checkpoint="path/to/sharded_checkpoint", 
-    device_map="auto", 
+    model,
+    checkpoint="path/to/sharded_checkpoint",
+    device_map="auto",
     no_split_module_classes=["BlockName"] # e.g., "GPT2Block"
 )
 ```
@@ -39,7 +39,7 @@ from accelerate import infer_auto_device_map
 max_memory = {0: "10GiB", 1: "15GiB", "cpu": "30GiB"}
 
 device_map = infer_auto_device_map(
-    model, 
+    model,
     max_memory=max_memory,
     no_split_module_classes=["BlockName"]
 )

@@ -45,13 +45,13 @@ def estimate_spectral_radius(weight, u, v, n_iters=1):
     """
     # Use BFloat16 to reduce overhead; compute in FP32 for symbols if needed
     w_flat = weight.view(weight.size(0), -1)
-    
+
     for _ in range(n_iters):
         # v <- W^T * u / ||W^T * u||
         v = F.normalize(torch.mv(w_flat.t(), u), p=2, dim=0)
         # u <- W * v / ||W * v||
         u = F.normalize(torch.mv(w_flat, v), p=2, dim=0)
-        
+
     # Rayleigh Quotient approximation
     sigma = torch.dot(u, torch.mv(w_flat, v)).item()
     return sigma, u, v

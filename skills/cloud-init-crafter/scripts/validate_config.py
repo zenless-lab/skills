@@ -39,12 +39,12 @@ def validate_cloud_config(filepath: str) -> bool:
     # 2. Validate YAML syntax
     try:
         parsed_yaml = yaml.safe_load(content)
-        
+
         # cloud-config should ideally parse into a dictionary
         if parsed_yaml is not None and not isinstance(parsed_yaml, dict):
             print("⚠️ Warning: File is valid YAML, but the top-level structure is not a dictionary.", file=sys.stderr)
             print("   cloud-init typically expects key-value pairs at the root level.", file=sys.stderr)
-            
+
     except yaml.YAMLError as exc:
         print("❌ Error: Invalid YAML format detected.", file=sys.stderr)
         if hasattr(exc, 'problem_mark'):
@@ -63,7 +63,7 @@ def main():
         description="Offline validator for cloud-init user-data (cloud-config) files."
     )
     parser.add_argument(
-        "file", 
+        "file",
         help="Path to the cloud-config YAML file to validate."
     )
     args = parser.parse_args()

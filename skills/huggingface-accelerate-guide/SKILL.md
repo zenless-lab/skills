@@ -75,13 +75,13 @@ Remove manual `.to(device)` calls for inputs and targets, as Accelerate's DataLo
 for batch in train_dataloader:
     optimizer.zero_grad()
     inputs, targets = batch
-    
+
     outputs = model(inputs)
     loss = loss_function(outputs, targets)
-    
+
     # Use accelerator.backward instead of loss.backward()
     accelerator.backward(loss)
-    
+
     optimizer.step()
     scheduler.step()
 ```
@@ -99,7 +99,7 @@ for batch in train_dataloader:
         inputs, targets = batch
         outputs = model(inputs)
         loss = loss_function(outputs, targets)
-        
+
         accelerator.backward(loss)
         optimizer.step()
         scheduler.step()
@@ -130,8 +130,8 @@ accelerator.wait_for_everyone()
 # Unwrap the model before saving
 unwrapped_model = accelerator.unwrap_model(model)
 unwrapped_model.save_pretrained(
-    "path/to/save", 
-    is_main_process=accelerator.is_main_process, 
+    "path/to/save",
+    is_main_process=accelerator.is_main_process,
     save_function=accelerator.save
 )
 
@@ -150,7 +150,7 @@ if accelerator.distributed_type == DistributedType.TPU:
 ```
 
 ### 8. Launching Scripts and Notebooks
-Always configure your environment first using `accelerate config`. 
+Always configure your environment first using `accelerate config`.
 
 **From the CLI:**
 ```bash

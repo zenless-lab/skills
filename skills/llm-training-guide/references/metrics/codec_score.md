@@ -34,18 +34,18 @@ def calculate_codec_step(model, tokenizer, target_text, context_text):
     inputs_base = tokenizer(target_text, return_tensors="pt").to(model.device)
     labels_base = inputs_base.input_ids.clone()
     ll_base = -model(**inputs_base, labels=labels_base).loss.item()
-    
+
     # 2. Contextualized Log-Likelihood
     full_prompt = f"{context_text}\n\n{target_text}"
     inputs_ctx = tokenizer(full_prompt, return_tensors="pt").to(model.device)
-    
+
     # Only calculate loss for the target_text portion of the sequence
     outputs_ctx = model(**inputs_ctx)
     logits = outputs_ctx.logits[0, -(inputs_base.input_ids.size(1)+1):-1, :]
     labels = inputs_ctx.input_ids[0, -inputs_base.input_ids.size(1):]
-    
+
     ll_ctx = -torch.nn.functional.cross_entropy(logits, labels).item()
-    
+
     return 1 if (ll_ctx - ll_base) < 0 else 0
 ```
 

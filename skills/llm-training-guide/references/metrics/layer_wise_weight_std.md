@@ -34,7 +34,7 @@ import torch
 def log_weight_std(model, step, log_interval=1000):
     if step % log_interval != 0:
         return
-        
+
     for name, param in model.named_parameters():
         # Focus on weight matrices; ignore bias and LayerNorm scales
         if param.dim() >= 2 and "weight" in name:

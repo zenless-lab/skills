@@ -8,7 +8,7 @@ Welcome to the Agent Skill Manager. This skill outlines the core philosophy and 
 
 ## 🧠 Core Philosophy: Simplicity & Progressive Disclosure
 
-When creating or refactoring a skill, you must first assess its complexity. 
+When creating or refactoring a skill, you must first assess its complexity.
 * **For simple skills:** A single `SKILL.md` file is entirely sufficient. Do not create unnecessary folders or files if the core logic and instructions are brief, straightforward, and easily fit within the agent's context window.
 * **For complex skills:** Your critical responsibility is designing for **Progressive Disclosure**. You must proactively split complex content into multiple files to manage the target agent's context window efficiently. Do not overload the main skill file.
 
@@ -51,6 +51,6 @@ If you need to consult the raw official definitions and specs during creation or
 
 * [For the Standard Operating Procedure on creating/editing skills](references/step-by-step-workflow.md)
 * [For YAML specifications](references/frontmatter-spec.md)
-* For coding and documentation rules: 
+* For coding and documentation rules:
   * [Script best practices](references/script-best-practices.md)
   * [Reference file best practices](references/reference-best-practices.md)
