@@ -40,15 +40,10 @@ unfixable = [
 [tool.ruff.lint.per-file-ignores]
 "scripts/*" = [
     "INP001",  # implicit-namespace-package: File is part of an implicit namespace package
-    "T201"     # print: print found
 ]
 "tests/**/*" = [
-    "PLC1901", # compare-to-empty-string: Compare to empty string
-    "PLR2004", # magic-value-comparison: Magic value used in comparison
-    "PLR6301", # no-self-use: Method could be a function or static method
     "S",       # flake8-bandit: Security testing
     "TID252",  # relative-imports: Relative imports ban
-    "ARG001"   # unused-function-argument: Unused function argument
 ]
 
 [tool.ruff.lint.flake8-tidy-imports]

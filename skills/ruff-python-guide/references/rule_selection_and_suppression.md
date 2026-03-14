@@ -19,13 +19,31 @@ Use `select` when the repository wants a clear baseline. Use `extend-select` whe
 
 Common families:
 
+* `A` for flake8-builtins shadowing checks
+* `B` for flake8-bugbear bug-prone patterns
+* `C4` for flake8-comprehensions cleanup and simplification
+* `DTZ` for naive datetime safety checks
 * `F` for Pyflakes-style correctness
 * `E` for pycodestyle error classes
-* `B` for bug-prone patterns
+* `EM` for exception message construction rules
 * `I` for import ordering
+* `ICN` for import alias conventions
+* `INP` for implicit namespace package checks
+* `ISC` for implicit string concatenation checks
+* `N` for PEP 8 naming checks
+* `NPY` for NumPy-specific linting
+* `PD` for pandas-vet data-frame usage checks
+* `PL` for the Pylint rule families
+* `Q` for quote-style linting
+* `RUF` for Ruff-specific lint rules
+* `S` for security-oriented flake8-bandit checks
+* `T10` for debugger statement checks
+* `T20` for print and pprint statement checks
+* `TID` for tidy-import rules such as relative import restrictions
 * `UP` for Python modernization
 * `D` for docstring enforcement
-* `Q` for quote-style linting
+* `W` for pycodestyle warning classes
+* `YTT` for version-check and year-2020 compatibility rules
 
 Be careful with style-oriented families when Ruff formatter or Black already governs the same space.
 

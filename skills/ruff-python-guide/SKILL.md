@@ -65,6 +65,9 @@ Load these when the user needs a copy-paste-ready starting point.
 * [GitHub Actions CI Template](assets/github_actions_ci.yml) - Direct CLI workflow for `ruff check`.
 * [GitHub Actions ruff-action Template](assets/github_actions_ruff_action.yml) - Managed installation workflow.
 * [GitLab CI Template](assets/gitlab-ci.yml) - `ruff check` plus `ruff format --diff` pipeline.
+* [pre-commit Basic Template](assets/pre-commit-basic.yml) - Minimal `ruff check` hook setup.
+* [pre-commit Fix Template](assets/pre-commit-fix.yml) - Auto-fix oriented pre-commit hook setup.
+* [pre-commit No-Notebooks Template](assets/pre-commit-no-notebooks.yml) - pre-commit setup that excludes notebook processing.
 
 ## Workflow
 
@@ -97,7 +100,7 @@ Choose references based on the user's goal:
 * Looking up exact settings semantics -> [Settings API Reference](references/settings.md)
 * Looking up exact rule codes, rule names, or full rule documentation -> use `ruff rule --all`; if you only need the rule list, use `ruff rule --all | grep '^# '`; if you need one rule, use `ruff rule <code>`
 * Mixing formatter and linter behavior -> [Formatter-Linter Compatibility](references/compatibility.md)
-* Pre-commit or CI setup -> [Integrations: pre-commit and CI](references/integrations.md), then the matching asset template under `assets/`
+* Pre-commit or CI setup -> [Integrations: pre-commit and CI](references/integrations.md), then one of [pre-commit Basic Template](assets/pre-commit-basic.yml), [pre-commit Fix Template](assets/pre-commit-fix.yml), [pre-commit No-Notebooks Template](assets/pre-commit-no-notebooks.yml), [GitHub Actions CI Template](assets/github_actions_ci.yml), [GitHub Actions ruff-action Template](assets/github_actions_ruff_action.yml), or [GitLab CI Template](assets/gitlab-ci.yml)
 * Adoption failures, noisy diffs, or migration questions -> [Troubleshooting and Migration](references/migration.md)
 
 ### Step 3: Plan Before Editing
