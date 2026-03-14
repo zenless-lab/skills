@@ -31,15 +31,15 @@ Always apply these principles in order:
 
 Load only the references needed for the task.
 
-* [Installation and Bootstrap](./references/installation_and_bootstrap.md) - Choose how Ruff is installed and establish a safe first-run workflow.
-* [Configuration Patterns](./references/configuration_patterns.md) - Build or edit `pyproject.toml`, `ruff.toml`, or inherited Ruff configurations.
-* [Configuration Presets](./references/config_presets.md) - Compare the provided general, machine-learning, and data-science TOML templates, then load the matching asset.
-* [Lint vs Format Workflows](./references/lint_vs_format_workflows.md) - Decide when to lint, fix, format, or run check-only flows.
-* [Rule Selection and Suppression](./references/rule_selection_and_suppression.md) - Add rules gradually, manage ignores, and document exceptions.
+* [Installation and Bootstrap](references/installation_and_bootstrap.md) - Choose how Ruff is installed and establish a safe first-run workflow.
+* [Configuration Patterns](references/configuration_patterns.md) - Build or edit `pyproject.toml`, `ruff.toml`, or inherited Ruff configurations.
+* [Configuration Presets](references/config_presets.md) - Compare the provided general, machine-learning, and data-science TOML templates, then load the matching asset.
+* [Lint vs Format Workflows](references/lint_vs_format_workflows.md) - Decide when to lint, fix, format, or run check-only flows.
+* [Rule Selection and Suppression](references/rule_selection_and_suppression.md) - Add rules gradually, manage ignores, and document exceptions.
 * [Settings API Reference](references/settings.md) - Single-file complete Ruff settings reference covering top-level, analyze, format, lint core, and plugin-specific configuration.
-* [Formatter-Linter Compatibility](./references/compatibility.md) - Avoid conflicts between Ruff's formatter and selected lint rules.
-* [Integrations: pre-commit and CI](./references/integrations.md) - Wire Ruff into automation and editor-driven workflows.
-* [Troubleshooting and Migration](./references/migration.md) - Resolve common adoption failures and migration friction.
+* [Formatter-Linter Compatibility](references/compatibility.md) - Avoid conflicts between Ruff's formatter and selected lint rules.
+* [Integrations: pre-commit and CI](references/integrations.md) - Wire Ruff into automation and editor-driven workflows.
+* [Troubleshooting and Migration](references/migration.md) - Resolve common adoption failures and migration friction.
 
 ## Rule Discovery via Ruff CLI
 
@@ -59,12 +59,12 @@ Examples:
 
 Load these when the user needs a copy-paste-ready starting point.
 
-* [General Ruff Template](./assets/pyproject.toml) - Baseline `pyproject.toml` preset.
-* [Machine Learning Ruff Template](./assets/pyproject.ai.toml) - Narrower ML-oriented preset.
-* [Data Science Ruff Template](./assets/pyproject.datascience.toml) - NumPy and pandas oriented preset.
-* [GitHub Actions CI Template](./assets/github_actions_ci.yml) - Direct CLI workflow for `ruff check`.
-* [GitHub Actions ruff-action Template](./assets/github_actions_ruff_action.yml) - Managed installation workflow.
-* [GitLab CI Template](./assets/gitlab-ci.yml) - `ruff check` plus `ruff format --diff` pipeline.
+* [General Ruff Template](assets/pyproject.toml) - Baseline `pyproject.toml` preset.
+* [Machine Learning Ruff Template](assets/pyproject.ai.toml) - Narrower ML-oriented preset.
+* [Data Science Ruff Template](assets/pyproject.datascience.toml) - NumPy and pandas oriented preset.
+* [GitHub Actions CI Template](assets/github_actions_ci.yml) - Direct CLI workflow for `ruff check`.
+* [GitHub Actions ruff-action Template](assets/github_actions_ruff_action.yml) - Managed installation workflow.
+* [GitLab CI Template](assets/gitlab-ci.yml) - `ruff check` plus `ruff format --diff` pipeline.
 
 ## Workflow
 
@@ -89,16 +89,16 @@ Identify:
 
 Choose references based on the user's goal:
 
-* New Ruff adoption or install choice -> [Installation and Bootstrap](./references/installation_and_bootstrap.md)
-* Editing settings or choosing config layout -> [Configuration Patterns](./references/configuration_patterns.md)
-* Starting from a known config template -> [Configuration Presets](./references/config_presets.md), then one of [General Ruff Template](./assets/pyproject.toml), [Machine Learning Ruff Template](./assets/pyproject.ai.toml), or [Data Science Ruff Template](./assets/pyproject.datascience.toml)
-* Defining local or CI commands -> [Lint vs Format Workflows](./references/lint_vs_format_workflows.md)
-* Adding rules or silencing false positives -> [Rule Selection and Suppression](./references/rule_selection_and_suppression.md)
+* New Ruff adoption or install choice -> [Installation and Bootstrap](references/installation_and_bootstrap.md)
+* Editing settings or choosing config layout -> [Configuration Patterns](references/configuration_patterns.md)
+* Starting from a known config template -> [Configuration Presets](references/config_presets.md), then one of [General Ruff Template](assets/pyproject.toml), [Machine Learning Ruff Template](assets/pyproject.ai.toml), or [Data Science Ruff Template](assets/pyproject.datascience.toml)
+* Defining local or CI commands -> [Lint vs Format Workflows](references/lint_vs_format_workflows.md)
+* Adding rules or silencing false positives -> [Rule Selection and Suppression](references/rule_selection_and_suppression.md)
 * Looking up exact settings semantics -> [Settings API Reference](references/settings.md)
 * Looking up exact rule codes, rule names, or full rule documentation -> use `ruff rule --all`; if you only need the rule list, use `ruff rule --all | grep '^# '`; if you need one rule, use `ruff rule <code>`
-* Mixing formatter and linter behavior -> [Formatter-Linter Compatibility](./references/compatibility.md)
-* Pre-commit or CI setup -> [Integrations: pre-commit and CI](./references/integrations.md), then the matching asset template under `assets/`
-* Adoption failures, noisy diffs, or migration questions -> [Troubleshooting and Migration](./references/migration.md)
+* Mixing formatter and linter behavior -> [Formatter-Linter Compatibility](references/compatibility.md)
+* Pre-commit or CI setup -> [Integrations: pre-commit and CI](references/integrations.md), then the matching asset template under `assets/`
+* Adoption failures, noisy diffs, or migration questions -> [Troubleshooting and Migration](references/migration.md)
 
 ### Step 3: Plan Before Editing
 

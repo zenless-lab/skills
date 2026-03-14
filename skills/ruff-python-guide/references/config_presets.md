@@ -6,27 +6,27 @@ The copy-paste-ready templates themselves live in `assets/` so they can be used 
 
 Template assets:
 
-* `../assets/pyproject.toml`
-* `../assets/pyproject.ai.toml`
-* `../assets/pyproject.datascience.toml`
+* `assets/pyproject.toml`
+* `assets/pyproject.ai.toml`
+* `assets/pyproject.datascience.toml`
 
 ## General Project
 
 Best for standard Python applications and libraries that want a broad lint profile with modernization, import hygiene, and Ruff-specific checks.
 
-Template: `../assets/pyproject.toml`
+Template: `assets/pyproject.toml`
 
 ## Machine Learning Project
 
 Best for model training or experimentation repositories that want practical correctness and import hygiene without the full Pylint-style breadth.
 
-Template: `../assets/pyproject.ai.toml`
+Template: `assets/pyproject.ai.toml`
 
 ## Data Science Project
 
 Best for notebooks, NumPy, and pandas heavy projects that need array/dataframe-aware linting.
 
-Template: `../assets/pyproject.datascience.toml`
+Template: `assets/pyproject.datascience.toml`
 
 ## Selection Guide
 
