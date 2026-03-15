@@ -20,6 +20,8 @@ Formatters make a best effort to wrap code, but lint rules like `E501` still fla
 
 If Black or Ruff formatter already governs wrapping, decide explicitly whether `E501` is still desirable.
 
+Black and Ruff formatter both treat line length as a best-effort formatting target, while `E501` remains a strict lint rule when enabled.
+
 ### Quote policy
 
 If Ruff formatter enforces a quote style, quote-oriented lint rules can become redundant or conflicting unless configured carefully.
@@ -44,6 +46,8 @@ Before enabling import-sorting behavior, confirm:
 
 Do not let multiple tools rewrite imports without a clear ownership decision.
 
+Ruff's import sorting is intended to be near-equivalent to isort with `profile = "black"`, but it is not byte-for-byte identical. Expect small differences around aliased imports, inline comments, and some standard-library classification.
+
 ## 4. Recommended Compatibility Profiles
 
 ### Ruff formatter replaces Black
@@ -66,13 +70,29 @@ Checklist:
 * avoid overlapping style lint categories unless intentionally enforced
 * keep command order predictable in hooks and CI
 
-## 5. Notebook and Documentation Compatibility
+Ruff's linter is compatible with Black out of the box as long as line length stays aligned and formatter-overlapping style rules are chosen deliberately.
+
+## 5. Ruff Formatter vs Black
+
+Ruff formatter is designed as a near-drop-in replacement for Black, not a promise of identical output.
+
+Practical guidance:
+
+* expect the vast majority of Black-formatted code to remain unchanged
+* expect a small number of differences around comments and edge formatting cases
+* review formatter diffs on a branch before replacing Black across a mature repository
+
+Do not describe Ruff formatter as fully identical to Black.
+
+## 6. Notebook and Documentation Compatibility
 
 Notebook and documentation formatting can widen Ruff's reach beyond standard `.py` files. Only enable these paths if the repository wants them reviewed with the same discipline as source code.
 
 When in doubt, exclude them explicitly and revisit later.
 
-## 6. Agent Decision Rules
+For VS Code notebook save actions, prefer the notebook-prefixed code actions such as `notebook.source.organizeImports` and `notebook.source.fixAll`. Ruff requires full-notebook context, so generic `source.*` actions can behave unexpectedly in notebooks.
+
+## 7. Agent Decision Rules
 
 When evaluating formatter-linter compatibility, answer these questions:
 

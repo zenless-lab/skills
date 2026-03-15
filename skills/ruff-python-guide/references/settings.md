@@ -14,6 +14,76 @@ For direct CLI lookup, Ruff can also describe settings interactively:
 * `ruff config`
 * `ruff config <key>`
 
+## Default Configuration and Discovery
+
+When a repository does not override Ruff, its baseline behavior is equivalent to the following shape:
+
+```toml
+[tool.ruff]
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+]
+line-length = 88
+indent-width = 4
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]
+ignore = []
+fixable = ["ALL"]
+unfixable = []
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+docstring-code-format = false
+docstring-code-line-length = "dynamic"
+```
+
+Discovery rules that matter during debugging:
+
+* Ruff uses the closest matching config file for each analyzed file.
+* A `pyproject.toml` without `[tool.ruff]` is ignored during config discovery.
+* `.ruff.toml` takes precedence over `ruff.toml`, and `ruff.toml` takes precedence over `pyproject.toml` in the same directory.
+* Ruff does not implicitly merge parent configs; use `extend` for inheritance.
+* If `--config` points to a file, relative paths inside that config are resolved from the current working directory.
+* If `target-version` is omitted, Ruff may infer it from `requires-python` in a nearby `pyproject.toml`.
+
+Default file discovery rules:
+
+* Ruff discovers `*.py`, `*.pyi`, `*.ipynb`, and `pyproject.toml` by default.
+* In preview mode, Ruff also discovers `*.pyw` by default.
+* Notebook linting and formatting are enabled by default on Ruff `0.6.0+`.
+* `include` patterns must match files, not directories.
+
 ## 1. Top-level Settings
 
 These settings apply across Ruff commands unless a more specific section overrides them.
@@ -32,7 +102,7 @@ These settings apply across Ruff commands unless a more specific section overrid
 
 #### `exclude`
 - **Description**: File patterns to exclude from formatting and linting.
-- **Default**: `[".bzr", ".direnv", ".eggs", ".git", ".git-rewrite", ".hg", ".mypy_cache", ".nox", ".pants.d", ".pytype", ".ruff_cache", ".svn", ".tox", ".venv", "__pypackages__", "_build", "buck-out", "dist", "node_modules", "venv"]`
+- **Default**: `[".bzr", ".direnv", ".eggs", ".git", ".git-rewrite", ".hg", ".ipynb_checkpoints", ".mypy_cache", ".nox", ".pants.d", ".pyenv", ".pytest_cache", ".pytype", ".ruff_cache", ".svn", ".tox", ".venv", ".vscode", "__pypackages__", "_build", "buck-out", "build", "dist", "node_modules", "site-packages", "venv"]`
 - **Type**: `list[str]`
 - **Example**: `exclude = [".venv"]`
 
@@ -79,8 +149,8 @@ These settings apply across Ruff commands unless a more specific section overrid
 - **Example**: `force-exclude = true`
 
 #### `include`
-- **Description**: Patterns to include when linting.
-- **Default**: `["*.py", "*.pyi", "*.pyw", "*.ipynb", "*.md", "**/pyproject.toml"]`
+- **Description**: Patterns to include during Ruff file discovery.
+- **Default**: `["*.py", "*.pyi", "*.ipynb", "pyproject.toml"]`
 - **Type**: `list[str]`
 - **Example**: `include = ["*.py"]`
 
@@ -105,7 +175,7 @@ These settings apply across Ruff commands unless a more specific section overrid
 #### `output-format`
 - **Description**: Style in which violation messages are formatted.
 - **Default**: `"full"`
-- **Type**: `"full" | "concise" | "grouped" | "json" | "junit" | "github" | "gitlab" | "pylint" | "azure"`
+- **Type**: `"concise" | "full" | "json" | "json-lines" | "junit" | "grouped" | "github" | "gitlab" | "pylint" | "rdjson" | "azure" | "sarif"`
 - **Example**: `output-format = "grouped"`
 
 #### `per-file-target-version`
@@ -147,7 +217,7 @@ These settings apply across Ruff commands unless a more specific section overrid
 #### `target-version`
 - **Description**: Minimum Python version to target.
 - **Default**: `"py310"`
-- **Type**: `"py37" | "py38" | "py39" | "py310" | "py311" | "py312" | "py313" | "py314"`
+- **Type**: `"py37" | "py38" | "py39" | "py310" | "py311" | "py312" | "py313" | "py314" | "py315"`
 - **Example**: `target-version = "py37"`
 
 #### `unsafe-fixes`

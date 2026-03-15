@@ -6,44 +6,28 @@ docstring-code-format = true
 docstring-code-line-length = 80
 
 [tool.ruff.lint]
-exclude = [
-    # Example: Ignore gRPC generated files
-    # "*_pb2.py",
-    # "*_pb2_grpc.py",
-]
-
 # Detailed information for each rule can be found at https://docs.astral.sh/ruff/rules/<code>/
-select = [
-    "A",       # flake8-builtins: Check for builtins used as variables
-    "C4",      # flake8-comprehensions: Better list/set/dict comprehensions
-    "E",       # pycodestyle error: PEP 8 styling errors
-    "EM",      # flake8-errmsg: Nicer error messages
-    "F",       # Pyflakes: Logical errors
-    "I",       # isort: Import sorting
-    "ICN",     # flake8-import-conventions: Enforce import conventions
-    "INP",     # flake8-no-pep420: Ban PEP-420 implicit namespace packages
-    "N",       # pep8-naming: Check PEP 8 naming conventions
-    "Q",       # flake8-quotes: Enforce quote style
-    "S",       # flake8-bandit: Security testing
-    "TID252",  # relative-imports: Relative imports ban
-    "W",       # pycodestyle warning: PEP 8 styling warnings
+extend-select = [
+    "I",    # isort: Import sorting
+    "N",    # pep8-naming: Check PEP 8 naming conventions
+    "TID",  # flake8-tidy-imports: Tidy up imports
+    "W",    # pycodestyle warning: PEP 8 styling warnings
 ]
-ignore = [
-    # "S105",  # hardcoded-password-string: Check for hardcoded passwords in strings
-    # "S106",  # hardcoded-password-func-arg: Check for hardcoded passwords in function arguments
-    # "S107",  # hardcoded-password-default: Check for hardcoded passwords in default arguments
-]
+# ignore = [
+#     "S105", # hardcoded-password-string: Check for hardcoded passwords in strings
+#     "S106", # hardcoded-password-func-arg: Check for hardcoded passwords in function arguments
+#     "S107", # hardcoded-password-default: Check for hardcoded passwords in default arguments
+# ]
 unfixable = [
-    "F401",    # unused-import: Unused import
+    "F401", # unused-import: Unused import
 ]
 
 [tool.ruff.lint.per-file-ignores]
 "scripts/*" = [
-    "INP001",  # implicit-namespace-package: File is part of an implicit namespace package
+    "TID",  # flake8-tidy-imports: Tidy up imports
 ]
 "tests/**/*" = [
-    "S",       # flake8-bandit: Security testing
-    "TID252",  # relative-imports: Relative imports ban
+    "TID252",   # relative-imports: Relative imports ban
 ]
 
 [tool.ruff.lint.flake8-tidy-imports]

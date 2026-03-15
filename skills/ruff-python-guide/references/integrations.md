@@ -142,6 +142,8 @@ Representative pattern:
     - id: ruff-format
 ```
 
+This matches Ruff's documented pattern for integrating both linter and formatter through `ruff-pre-commit`.
+
 ### Enable automatic fixes
 
 Template: `assets/pre-commit-fix.yml`
@@ -173,6 +175,8 @@ To avoid running on Jupyter Notebooks, remove `jupyter` from the accepted file t
     - id: ruff-format
       types_or: [ python, pyi ]
 ```
+
+Use this when the repository wants Ruff for Python modules but not for notebook files.
 
 Operational rules:
 
@@ -218,6 +222,9 @@ Keep editor behavior aligned with repository policy:
 * do not silently run multiple formatters on save unless the ordering is intentional
 * keep local save actions aligned with CI commands
 * avoid enabling fix-on-save if CI is intended to be report-only
+* prefer notebook-prefixed code actions in VS Code notebooks over generic `source.*` actions
+
+For notebooks, Ruff needs full-notebook context for accurate diagnostics and fixes. Generic per-cell `source.organizeImports` or `source.fixAll` save actions can therefore produce confusing results.
 
 ## 6. Integration checklist
 

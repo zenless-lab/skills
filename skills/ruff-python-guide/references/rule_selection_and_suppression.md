@@ -6,6 +6,8 @@ This reference covers how to expand Ruff's rule set without making the project n
 
 Ruff can enforce many rule families, but broad enablement is rarely the right first move.
 
+Ruff's default rule set is intentionally narrow: it enables Pyflakes `F` plus a subset of pycodestyle `E` rules, while omitting warning classes like `W` and complexity checks like `C901` by default.
+
 Recommended progression:
 
 1. Start from defaults or near-defaults.
@@ -47,6 +49,8 @@ Common families:
 
 Be careful with style-oriented families when Ruff formatter or Black already governs the same space.
 
+If the repository is new to linting, the default rule set is the best initial baseline more often than a broad custom selection.
+
 ## 3. Treat `ALL` as a Governance Choice
 
 `ALL` is useful only when the team is ready to adopt new rules on future Ruff upgrades.
@@ -77,10 +81,9 @@ This is especially important during migration, where some rule families are safe
 Prefer suppressions in this order, from narrowest to broadest:
 
 1. inline `# noqa: CODE`
-2. block range suppressions for a specific rule set
-3. file-level `# ruff: noqa: CODE`
-4. `per-file-ignores` in config
-5. global `ignore`
+2. file-level `# ruff: noqa: CODE`
+3. `per-file-ignores` in config
+4. global `ignore`
 
 Use the smallest scope that solves the problem.
 
@@ -108,6 +111,8 @@ Good examples:
 
 Avoid blanket `# noqa` unless a coded suppression would be unreasonably noisy.
 
+Prefer code-specific suppressions such as `# noqa: UP035` over a bare `# noqa`.
+
 ## 8. Migration Pattern for Existing Codebases
 
 When adding a new rule family to a mature repository:
@@ -117,6 +122,8 @@ When adding a new rule family to a mature repository:
 3. fix obviously safe issues
 4. decide whether remaining exceptions belong in config or source
 5. only then consider `--add-noqa` for residual legacy cases
+
+`--add-noqa` is a migration tool, not the default steady-state suppression strategy.
 
 ## 9. Review Checklist
 

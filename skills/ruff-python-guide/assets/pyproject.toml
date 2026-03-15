@@ -1,71 +1,42 @@
 [tool.ruff]
 line-length = 120
+# Example: Ignore gRPC generated files
+# extend-exclude = [
+#     "*_pb2.py",
+#     "*_pb2_grpc.py",
+# ]
 
 [tool.ruff.format]
 docstring-code-format = true
 docstring-code-line-length = 80
 
 [tool.ruff.lint]
-exclude = [
-    # Example: Ignore gRPC generated files
-    # "*_pb2.py",
-    # "*_pb2_grpc.py",
+extend-select = [
+    "E",    # pycodestyle error: PEP 8 styling errors
+    "I",    # isort: Import sorting
+    "N",    # pep8-naming: Check PEP 8 naming conventions
+    "S",    # flake8-bandit: Security testing
+    "T10",  # flake8-debugger: Check for debugger imports and set_trace calls
+    "T20",  # flake8-print: Check for print statements
+    "TID",  # flake8-tidy-imports: Tidy up imports
+    "UP",   # pyupgrade: Upgrade syntax for newer Python versions
+    "W",    # pycodestyle warning: PEP 8 styling warnings
 ]
-
-# Detailed information for each rule can be found at https://docs.astral.sh/ruff/rules/<code>/
-select = [
-    # "ALL",   # ALL: All rules
-    "A",       # flake8-builtins: Check for builtins used as variables
-    "B",       # flake8-bugbear: Detect common bugs and design problems
-    "C4",      # flake8-comprehensions: Better list/set/dict comprehensions
-    "DTZ",     # flake8-datetimez: Detect usage of unsafe naive datetime
-    "E",       # pycodestyle error: PEP 8 styling errors
-    "EM",      # flake8-errmsg: Nicer error messages
-    "F",       # Pyflakes: Logical errors
-    "I",       # isort: Import sorting
-    "ICN",     # flake8-import-conventions: Enforce import conventions
-    "INP",     # flake8-no-pep420: Ban PEP-420 implicit namespace packages
-    "ISC",     # flake8-implicit-str-concat: Encourage explicit string concatenation
-    "N",       # pep8-naming: Check PEP 8 naming conventions
-    "PL",      # Pylint: Pylint rules
-    "Q",       # flake8-quotes: Enforce quote style
-    "RUF",     # Ruff-specific rules: Ruff-specific checks
-    "S",       # flake8-bandit: Security testing
-    "T10",     # flake8-debugger: Check for debugger imports and set_trace calls
-    "T20",     # flake8-print: Check for print statements
-    "TID",     # flake8-tidy-imports: Tidy up imports
-    "UP",      # pyupgrade: Upgrade syntax for newer Python versions
-    "W",       # pycodestyle warning: PEP 8 styling warnings
-    "YTT",     # flake8-2020: Check for misuse of sys.version or sys.version_info
-]
-
-ignore = [
-    # "S105",  # hardcoded-password-string: Check for hardcoded passwords in strings
-    # "S106",  # hardcoded-password-func-arg: Check for hardcoded passwords in function arguments
-    # "S107",  # hardcoded-password-default: Check for hardcoded passwords in default arguments
-    "C901",    # complex-structure: Function is too complex
-    "PLR0911", # too-many-return-statements: Too many return statements
-    "PLR0912", # too-many-branches: Too many branches
-    "PLR0913", # too-many-arguments: Too many arguments
-    "PLR0915", # too-many-statements: Too many statements
-    "ISC001",  # single-line-implicit-string-concatenation: Single-line implicit string concatenation
-]
+# ignore = [
+#     "S105", # hardcoded-password-string: Check for hardcoded passwords in strings
+#     "S106", # hardcoded-password-func-arg: Check for hardcoded passwords in function arguments
+#     "S107", # hardcoded-password-default: Check for hardcoded passwords in default arguments
+# ]
 unfixable = [
-    "F401",    # unused-import: Unused import
+    "F401", # unused-import: Unused import
 ]
 
 [tool.ruff.lint.per-file-ignores]
 "scripts/*" = [
-    "INP001",  # implicit-namespace-package: File is part of an implicit namespace package
-    "T201",    # print: print found
+    "T201", # print: print found
 ]
 "tests/**/*" = [
-    "PLC1901", # compare-to-empty-string: Compare to empty string
-    "PLR2004", # magic-value-comparison: Magic value used in comparison
-    "PLR6301", # no-self-use: Method could be a function or static method
-    "S",       # flake8-bandit: Security testing
-    "TID252",  # relative-imports: Relative imports ban
-    "ARG001",  # unused-function-argument: Unused function argument
+    "S",    # flake8-bandit: Security testing
 ]
 
 [tool.ruff.lint.flake8-tidy-imports]
