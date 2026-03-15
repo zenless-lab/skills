@@ -109,7 +109,7 @@ docker run -v .:/io --rm ghcr.io/astral-sh/ruff:0.3.0 check
 For Podman on SELinux:
 
 ```bash
-docker run -v .:/io:Z --rm ghcr.io/astral-sh/ruff check
+podman run -v .:/io:Z --rm ghcr.io/astral-sh/ruff check
 ```
 
 Use containerized execution when CI or a local workflow wants Ruff without a Python environment bootstrap.
