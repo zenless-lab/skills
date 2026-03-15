@@ -8,8 +8,10 @@ Ruff exposes separate workflows:
 
 * `ruff check` for diagnostics
 * `ruff check --fix` for automatic lint fixes
+* `ruff check --diff` for previewing fixes without rewriting files
 * `ruff format` for code formatting
 * `ruff format --check` for verification without rewriting files
+* `ruff format --diff` for previewing formatting deltas
 
 Do not collapse these into one mental model. They solve different problems and carry different rollout risks.
 
@@ -24,6 +26,8 @@ ruff check
 ruff format --check
 ```
 
+Use `uv run` variants when Ruff is installed inside the project environment.
+
 ### Safe cleanup flow
 
 Use when the repository already accepts Ruff fixes and formatting:
@@ -34,6 +38,8 @@ ruff format
 ```
 
 This order matters because lint fixes can produce code that still needs formatting.
+
+If the repository permits only safe fixes, do not add `--unsafe-fixes` by default.
 
 ### Narrow-scope flow
 
@@ -63,6 +69,8 @@ Use when formatting is enforced but CI should not mutate files:
 ruff format --check .
 ```
 
+Use `ruff format --diff .` when reviewers benefit from seeing the exact formatting delta in CI logs.
+
 ### Combined verification
 
 Use when Ruff owns both responsibilities:
@@ -85,6 +93,8 @@ Default practice:
 
 Use unsafe fixes cautiously because they can alter runtime behavior, exception types, or surrounding comments.
 
+If CI should fail when a fix or format would have changed files, use flags such as `--exit-non-zero-on-fix` or `--exit-non-zero-on-format` intentionally rather than relying on implicit policy.
+
 ## 5. When to Use `--add-noqa`
 
 Use `ruff check --add-noqa` only during deliberate migration phases.
@@ -102,6 +112,8 @@ Bad use cases:
 ## 6. Notebooks and Documentation Files
 
 If notebooks are included, decide whether Ruff should lint them, format them, or both. Keep exclusions explicit because notebook behavior can differ from library code expectations.
+
+Remember that some rules behave differently for notebooks. For example, `E402` applies at the top of a notebook cell rather than the top of the whole file.
 
 If documentation code blocks are in scope, verify that the formatter mode and include settings match the repository's documentation workflow.
 

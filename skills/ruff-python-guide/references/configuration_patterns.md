@@ -20,6 +20,13 @@ Use this decision rule:
 
 Ruff does not implicitly merge parent configurations. If you need inheritance, use `extend` deliberately.
 
+If multiple Ruff config files exist in the same directory, `.ruff.toml` takes precedence over `ruff.toml`, and `ruff.toml` takes precedence over `pyproject.toml`.
+
+Two discovery rules matter during troubleshooting:
+
+* Ruff ignores a `pyproject.toml` that does not contain `[tool.ruff]` when searching for the closest config.
+* If `--config path/to/file` is passed on the command line, that config is used for all analyzed files, and relative paths inside it are resolved from the current working directory.
+
 ## 2. Baseline Shared Settings
 
 Most repositories should make these choices explicit:
@@ -42,6 +49,8 @@ Key points:
 * `target-version` should match supported Python, not the newest local interpreter by accident.
 * `select` should be explicit once the team moves beyond pure defaults.
 
+If `target-version` is omitted, Ruff may infer it from a nearby `pyproject.toml` via the `requires-python` field. Prefer setting one of the two intentionally.
+
 ## 3. Common Configuration Patterns
 
 ### Unified lint and format
@@ -60,6 +69,8 @@ select = ["E4", "E7", "E9", "F", "B", "I", "UP"]
 quote-style = "double"
 docstring-code-format = true
 ```
+
+Use this only if the repository intends Ruff to own formatting. If Black is still active, remove overlapping formatter ownership first.
 
 ### Lint-only alongside Black
 
@@ -113,11 +124,21 @@ Example:
 "*.ipynb" = ["T20"]
 ```
 
+Use `lint.exclude` or `format.exclude` when notebooks should participate in only one side of Ruff's behavior.
+
 ## 5. Notebook and Markdown Considerations
+
+Ruff discovers `*.py`, `*.pyi`, `*.ipynb`, and `pyproject.toml` by default. In preview mode, it also discovers `*.pyw` by default.
+
+Ruff has built-in notebook support and, as of `0.6.0`, lints and formats notebooks by default.
 
 Ruff can operate on notebooks, and some formatting features also extend to code blocks in documentation-focused files.
 
 Use explicit include or exclude settings when notebooks or documentation are intentionally out of scope. Keep lint and format exclusions separate if only one behavior should apply.
+
+Important include rule:
+
+* `include` patterns must match files, not directories. `include = ["src"]` is invalid.
 
 ## 6. Monorepo and Extended Configs
 
@@ -137,7 +158,20 @@ Use this when:
 * packages need local exceptions
 * local config should stay small and reviewable
 
-## 7. Configuration Review Checklist
+Remember that `extend` is Ruff's explicit inheritance mechanism. Parent configs are otherwise ignored.
+
+## 7. Command-line Overrides
+
+Use dedicated flags for common overrides such as `--select`, `--line-length`, or `--target-version`.
+
+Use `--config` in two distinct ways:
+
+* to point Ruff at a config file
+* to override individual settings with TOML fragments, such as `--config "lint.per-file-ignores = {'__init__.py' = ['E402']}"`
+
+Dedicated command-line flags take precedence over `--config` overrides for the same option.
+
+## 8. Configuration Review Checklist
 
 Before finalizing a Ruff config, confirm:
 

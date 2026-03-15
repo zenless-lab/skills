@@ -76,6 +76,8 @@ Good default posture:
 * begin with correctness and bug-prone rules
 * add style-oriented or framework-specific rules later
 
+Ruff can replace Flake8 effectively when the project uses Flake8 with no plugins or a modest plugin set, especially when paired with Black or Ruff formatter on Python 3 code. Do not claim that every historical Flake8 plugin maps perfectly without verification.
+
 ## 6. Migrating from Black
 
 Before replacing Black with Ruff formatter, confirm:
@@ -90,6 +92,8 @@ Rollout advice:
 * review noisy edge cases such as comments and docstring examples
 * remove redundant formatter steps only after the new flow is stable
 
+Describe the migration target as near-compatible, not identical. That wording matches Ruff's own compatibility posture.
+
 ## 7. Ruff Alongside Pylint or Type Checkers
 
 Ruff is not a full substitute for a type checker, and it does not mirror every Pylint behavior.
@@ -100,7 +104,27 @@ Use this split:
 * type checkers for semantic type analysis
 * Pylint only where its project-specific checks still justify the overlap
 
-## 8. Migration Review Checklist
+Useful boundary statements:
+
+* Ruff is a linter, not a type checker.
+* Ruff and Pylint overlap, but they do not enforce the same rule set.
+* Ruff does not support custom third-party lint plugins today.
+
+## 8. Other Migration Questions
+
+### Replacing isort
+
+Ruff's import sorting is generally close to isort with `profile = "black"`, but there are edge-case differences. Validate import-heavy modules before removing isort from automation.
+
+### Replacing Black and isort together
+
+If Ruff takes over both formatting and import sorting, remove overlapping hook and CI steps in the same change set or document the temporary mixed state explicitly.
+
+### Python version support
+
+Ruff lints Python `3.7+` code and is installable on Python `3.7+`. If the repository targets older syntax or runtime compatibility shims, validate modernization rules carefully.
+
+## 9. Migration Review Checklist
 
 Before calling the migration complete, confirm:
 
