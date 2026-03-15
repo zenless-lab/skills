@@ -1,17 +1,16 @@
 [tool.ruff]
 line-length = 120
-
-[tool.ruff.format]
-docstring-code-format = true
-docstring-code-line-length = 80
-
-[tool.ruff.lint]
 # Example: Ignore gRPC generated files
 # extend-exclude = [
 #     "*_pb2.py",
 #     "*_pb2_grpc.py",
 # ]
 
+[tool.ruff.format]
+docstring-code-format = true
+docstring-code-line-length = 80
+
+[tool.ruff.lint]
 # Detailed information for each rule can be found at https://docs.astral.sh/ruff/rules/<code>/
 extend-select = [
     # "ALL",   # ALL: All rules
