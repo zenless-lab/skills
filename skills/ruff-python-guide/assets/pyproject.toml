@@ -36,7 +36,8 @@ unfixable = [
     "T201", # print: print found
 ]
 "tests/**/*" = [
-    "S",    # flake8-bandit: Security testing
+    "S",        # flake8-bandit: Security testing
+    "TID252",   # relative-imports: Relative imports ban
 ]
 
 [tool.ruff.lint.flake8-tidy-imports]
