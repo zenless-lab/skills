@@ -42,7 +42,6 @@ ignore = [
     # "S105",     # hardcoded-password-string: Check for hardcoded passwords in strings
     # "S106",     # hardcoded-password-func-arg: Check for hardcoded passwords in function arguments
     # "S107",     # hardcoded-password-default: Check for hardcoded passwords in default arguments
-    "C901",     # complex-structure: Function is too complex
     "PLR0911",  # too-many-return-statements: Too many return statements
     "PLR0912",  # too-many-branches: Too many branches
     "PLR0913",  # too-many-arguments: Too many arguments
@@ -64,7 +63,6 @@ unfixable = [
     "PLR6301",  # no-self-use: Method could be a function or static method
     "S",        # flake8-bandit: Security testing
     "TID252",   # relative-imports: Relative imports ban
-    "ARG001",   # unused-function-argument: Unused function argument
 ]
 
 [tool.ruff.lint.flake8-tidy-imports]
