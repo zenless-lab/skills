@@ -6,6 +6,12 @@ docstring-code-format = true
 docstring-code-line-length = 80
 
 [tool.ruff.lint]
+# Example: Ignore gRPC generated files
+# extend-exclude = [
+#     "*_pb2.py",
+#     "*_pb2_grpc.py",
+# ]
+
 extend-select = [
     "E",    # pycodestyle error: PEP 8 styling errors
     "I",    # isort: Import sorting

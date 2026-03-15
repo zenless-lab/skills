@@ -7,7 +7,7 @@ docstring-code-line-length = 80
 
 [tool.ruff.lint]
 # Example: Ignore gRPC generated files
-# exclude = [
+# extend-exclude = [
 #     "*_pb2.py",
 #     "*_pb2_grpc.py",
 # ]

@@ -7,13 +7,13 @@ docstring-code-line-length = 80
 
 [tool.ruff.lint]
 # Example: Ignore gRPC generated files
-# exclude = [
+# extend-exclude = [
 #     "*_pb2.py",
 #     "*_pb2_grpc.py",
 # ]
 
 # Detailed information for each rule can be found at https://docs.astral.sh/ruff/rules/<code>/
-select = [
+extend-select = [
     # "ALL",   # ALL: All rules
     "A",    # flake8-builtins: Check for builtins used as variables
     "B",    # flake8-bugbear: Detect common bugs and design problems
