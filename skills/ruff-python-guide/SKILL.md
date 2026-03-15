@@ -15,7 +15,7 @@ This skill helps you:
 3. Separate linting, fixing, and formatting workflows clearly.
 4. Enable rules incrementally and keep suppressions narrow.
 5. Integrate Ruff into local development, pre-commit, and CI.
-6. Troubleshoot migration issues and formatter-linter conflicts.
+6. Troubleshoot migration issues, formatter-linter conflicts, and config-discovery surprises.
 
 ## Core Principles
 
@@ -26,20 +26,21 @@ Always apply these principles in order:
 3. **Prefer Incremental Adoption**: Start with a narrow rule set and expand deliberately.
 4. **Minimize Suppressions**: Prefer targeted `per-file-ignores` or `noqa` annotations over broad global ignores.
 5. **Protect Existing Workflows**: Keep Ruff aligned with Black, type checkers, notebooks, and existing automation where they remain in use.
+6. **Be Precise About Ownership**: State clearly whether Ruff owns linting, formatting, import sorting, notebooks, or only a subset.
 
 ## Local References (Load On-Demand)
 
 Load only the references needed for the task.
 
-* [Installation and Bootstrap](references/installation_and_bootstrap.md) - Choose how Ruff is installed and establish a safe first-run workflow.
-* [Configuration Patterns](references/configuration_patterns.md) - Build or edit `pyproject.toml`, `ruff.toml`, or inherited Ruff configurations.
+* [Installation and Bootstrap](references/installation_and_bootstrap.md) - Choose among project-local, ephemeral, platform package, or container installs and establish a safe first-run workflow.
+* [Configuration Patterns](references/configuration_patterns.md) - Build or edit `pyproject.toml`, `ruff.toml`, or inherited Ruff configurations, including config discovery and notebook scope.
 * [Configuration Presets](references/config_presets.md) - Compare the provided general, machine-learning, and data-science TOML templates, then load the matching asset.
 * [Lint vs Format Workflows](references/lint_vs_format_workflows.md) - Decide when to lint, fix, format, or run check-only flows.
 * [Rule Selection and Suppression](references/rule_selection_and_suppression.md) - Add rules gradually, manage ignores, and document exceptions.
 * [Settings API Reference](references/settings.md) - Single-file complete Ruff settings reference covering top-level, analyze, format, lint core, and plugin-specific configuration.
-* [Formatter-Linter Compatibility](references/compatibility.md) - Avoid conflicts between Ruff's formatter and selected lint rules.
-* [Integrations: pre-commit and CI](references/integrations.md) - Wire Ruff into automation and editor-driven workflows.
-* [Troubleshooting and Migration](references/migration.md) - Resolve common adoption failures and migration friction.
+* [Formatter-Linter Compatibility](references/compatibility.md) - Avoid conflicts between Ruff's formatter, Black, import sorting, and notebook save actions.
+* [Integrations: pre-commit and CI](references/integrations.md) - Wire Ruff into automation and editor-driven workflows without conflicting save actions or notebook behavior.
+* [Troubleshooting and Migration](references/migration.md) - Resolve common adoption failures and migration friction across Black, Flake8, isort, Pylint, and type checkers.
 
 ## Rule Discovery via Ruff CLI
 
@@ -60,6 +61,7 @@ Examples:
 Load these when the user needs a copy-paste-ready starting point.
 
 * [General Ruff Template](assets/pyproject.toml) - Baseline `pyproject.toml` preset.
+* [Strict Ruff Template](assets/pyproject.strict.toml) - Broader preset with explicit ignores and per-file exceptions.
 * [Machine Learning Ruff Template](assets/pyproject.ai.toml) - Narrower ML-oriented preset.
 * [Data Science Ruff Template](assets/pyproject.datascience.toml) - NumPy and pandas oriented preset.
 * [GitHub Actions CI Template](assets/github_actions_ci.yml) - Direct CLI workflow for `ruff check`.
@@ -86,6 +88,7 @@ Identify:
 * whether Ruff is already installed
 * whether Black, Flake8, isort, or Pylint are still active
 * whether Ruff is used for linting, formatting, or both
+* whether notebooks are intentionally in or out of scope
 * line length, target Python version, and rule-selection strategy
 
 ### Step 2: Route to the Right Reference
@@ -94,7 +97,7 @@ Choose references based on the user's goal:
 
 * New Ruff adoption or install choice -> [Installation and Bootstrap](references/installation_and_bootstrap.md)
 * Editing settings or choosing config layout -> [Configuration Patterns](references/configuration_patterns.md)
-* Starting from a known config template -> [Configuration Presets](references/config_presets.md), then one of [General Ruff Template](assets/pyproject.toml), [Machine Learning Ruff Template](assets/pyproject.ai.toml), or [Data Science Ruff Template](assets/pyproject.datascience.toml)
+* Starting from a known config template -> [Configuration Presets](references/config_presets.md), then one of [General Ruff Template](assets/pyproject.toml), [Strict Ruff Template](assets/pyproject.strict.toml), [Machine Learning Ruff Template](assets/pyproject.ai.toml), or [Data Science Ruff Template](assets/pyproject.datascience.toml)
 * Defining local or CI commands -> [Lint vs Format Workflows](references/lint_vs_format_workflows.md)
 * Adding rules or silencing false positives -> [Rule Selection and Suppression](references/rule_selection_and_suppression.md)
 * Looking up exact settings semantics -> [Settings API Reference](references/settings.md)
@@ -130,6 +133,7 @@ When possible, validate with commands appropriate to the task:
 * `ruff check --fix`
 * `ruff format --check`
 * `ruff format`
+* `ruff check --show-settings <path>`
 
 In automation, ensure the chosen commands match the intended policy: fail-only, fix-before-format, or diff-only.
 
