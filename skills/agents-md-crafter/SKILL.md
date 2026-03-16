@@ -1,6 +1,6 @@
 ---
 name: agents-md-crafter
-description: Expert guide for creating, updating, and improving `AGENTS.md` (or similar agent instruction) files. Follows https://agents.md/ standards. Use when generating AI agent instructions.
+description: Use this skill when you need to create, update, or improve AI agent instruction files like AGENTS.md, GEMINI.md, or copilot-instructions.md. Trigger this anytime the user wants to set up standard AI rules, document project context for LLMs, or add repository-wide guidelines for AI agents.
 ---
 
 # AGENTS.md Expert

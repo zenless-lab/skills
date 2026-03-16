@@ -1,6 +1,6 @@
 ---
 name: agent-skills-crafter
-description: Expert guide for creating, editing, evaluating, and improving Agent Skills. Use this when a user wants to build a new skill, refine an existing one, write scripts for a skill, or optimize a skill's description and outputs.
+description: Use this skill when you need to create, edit, evaluate, or improve Agent Skills. Trigger this even if the user just asks to build a new agent workflow, refine an existing AI capability, write support scripts for an agent, or optimize prompt descriptions and outputs.
 ---
 
 # Agent Skills Crafter
@@ -20,7 +20,11 @@ You are an expert at creating, editing, and improving Agent Skills. Agent Skills
 ### Defining Scope & Trigger (Frontmatter)
 - **Determine the Scope:** Focus on what the agent wouldn't know on its own.
 - **Scaffold:** Create the directory (`skill-name/SKILL.md`). You can use `assets/skill_template.md`.
-- **Optimize the Description:** Read [Best Practices](references/best_practices.md) to ensure the skill reliably triggers when needed.
+- **Optimize the Description:** Because agents use progressive disclosure, the `description` field determines whether a skill is triggered. Follow these key techniques:
+  - **Imperative phrasing:** Frame it as an instruction directly to the agent (e.g., "Use this skill when...").
+  - **Focus on user intent:** Describe what the user is trying to achieve, not the internal mechanics.
+  - **Be pushy:** Explicitly list contexts where the skill applies, including cases where the user doesn't explicitly name the domain.
+  - Read [Best Practices](references/best_practices.md) for more details.
 
 ### Writing Skill Instructions
 - Consult **[Best Practices](references/best_practices.md)** for guidelines on phrasing, providing defaults, and building workflows.

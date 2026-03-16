@@ -1,6 +1,6 @@
 ---
 name: secret-scanner
-description: Multi-step secret and PII scanning for codebase, files, or git changes. Use when asked to scan for leaked credentials, passwords, tokens, API keys, or sensitive PII (emails, phone numbers, real names) in a project or diff.
+description: Use this skill when instructed to perform a security scan, find leaked secrets, or check for PII in the codebase or git diffs. Trigger this even if the user broadly asks to check for security issues, leaked credentials, passwords, API tokens, emails, or sensitive data before committing.
 ---
 
 # Secret Scanner Skill
