@@ -45,8 +45,8 @@ All code changes must be verified. Agents must run tests to confirm their work b
 
 ## References / Sub-Domain Instructions (Progressive Disclosure)
 To keep context lean, specific architectural guidelines are located in their respective files. Agents should read these when working on relevant features:
-- **Database Rules:** [Link to docs/DATABASE.md]
-- **API Standards:** [Link to docs/API.md]
+- **Database Rules:** [docs/DATABASE.md](docs/DATABASE.md)
+- **API Standards:** [docs/API.md](docs/API.md)
 
 ## Framework Specific Notes
 [Add any specific notes for particular tools or agents used in this project.]
