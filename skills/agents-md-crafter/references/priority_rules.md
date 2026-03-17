@@ -4,7 +4,7 @@ When managing AI instructions in modern, complex codebases (e.g., monorepos), mu
 
 ## Hierarchical Scanning Logic (The "Proximity Principle")
 Most frameworks apply a geographic proximity principle: instructions closer to the file being edited take precedence over global ones.
-- **Root Directory (`AGENTS.md`)**: Act as global rules, usually always active for every session.
+- **Root Directory (`AGENTS.md`)**: Acts as global rules, usually always active for every session.
 - **Subdirectories (e.g., `frontend/AGENTS.md`)**: Act as localized rules, applying only to files within that directory. This prevents context pollution (e.g., backend coding standards don't apply to frontend code).
 
 ## GitHub Copilot's Priority Model
