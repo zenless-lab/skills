@@ -1,118 +1,131 @@
-# Skills
+<div align="center">
 
-<p align="left">
-	<img alt="License" src="https://img.shields.io/badge/license-Apache%202.0-blue.svg">
-	<img alt="Format" src="https://img.shields.io/badge/content-Markdown-0f172a.svg">
-	<img alt="Focus" src="https://img.shields.io/badge/focus-AI%20Training%20%7C%20Engineering-7c3aed.svg">
-	<img alt="Quality" src="https://img.shields.io/badge/quality-pre--commit-brightgreen.svg">
-</p>
+# 🤖 AI Agent Skills Repository
 
-A curated collection of reusable, reference-first **Agent Skills** for AI training, software engineering, and secure development workflows.
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
+[![Format](https://img.shields.io/badge/content-Markdown-0f172a.svg)](https://daringfireball.net/projects/markdown/)
+[![Focus](https://img.shields.io/badge/focus-AI%20Agent%20Skills%20%7C%20Engineering-7c3aed.svg)](https://github.com/zenless-lab/skills)
+[![Quality](https://img.shields.io/badge/quality-pre--commit-brightgreen.svg)](https://pre-commit.com/)
 
-This repository is designed for progressive loading: each skill keeps core guidance in `SKILL.md` and deep context in `references/` (plus scripts/templates where needed).
+**A curated collection of reusable, production-ready Agent Skills and documentation, crafted specifically to empower AI Agents (like VS Code Copilot) across varying technical domains.**
 
-## Why this repo
+[**Explore Skills**](#️-available-skills) • [**Quick Start**](#-quick-start) • [**Create a Skill**](#️-creating-a-new-skill) • [**Contributing**](#-contributing)
 
-- **Reusable skill modules** for different technical domains
-- **Reference-first design** to reduce hallucination and improve consistency
-- **Practical workflows** with clear routing and response templates
-- **Production-minded quality checks** with pre-commit and secret scanning
+</div>
 
-## Repository layout
+---
+
+## 🌟 Overview
+
+The `skills` repository is designed around **progressive disclosure**.
+Each skill retains core operational instructions in `SKILL.md` while deep-dive context, scripts, and templates are structured into dedicated `references/`, `scripts/`, or `assets/` directories. This prevents context bloat, reduces LLM hallucination, and ensures high-quality generation.
+
+---
+
+## 🧭 Repository Structure
 
 ```text
-.
-├── skills/
-│   ├── huggingface-accelerate-guide/
-│   ├── llm-training-guide/
-│   ├── proto-schema-expert/
-│   ├── python-standards/
-│   └── secret-leak-check/
-├── .github/agents/
-├── .devcontainer/
-├── .pre-commit-config.yaml
-└── README.md
+📦 skills
+ ┣ 📂 .devcontainer/        # Development environment configuration
+ ┣ 📂 .agents/              # Agent configuration files
+ ┣ 📂 skills/               # Core agent skills
+ │  ┣ 📂 agent-skills-crafter/
+ │  ┣ 📂 agents-md-crafter/
+ │  ┣ 📂 cloud-init-crafter/
+ │  ┣ 📂 huggingface-accelerate-guide/
+ │  ┣ 📂 llm-training-guide/
+ │  ┣ 📂 proto-schema-expert/
+ │  ┣ 📂 python-standards/
+ │  ┣ 📂 readme-crafter/
+ │  ┣ 📂 ruff-python-guide/
+ │  ┣ 📂 secret-scanner/
+ │  ┗ 📂 starlark-expert/
+ ┣ 📜 AGENTS.md             # Top-level agent instructions
+ ┣ 📜 .pre-commit-config.yaml
+ ┗ 📜 README.md
 ```
 
-## Available skills
+---
 
-| Skill | Purpose | Key assets |
-|---|---|---|
-| `huggingface-accelerate-guide` | A specialized assistant for using Hugging Face Accelerate for distributed training, inference, and large model handling. | Training templates, inference scripts, troubleshooting tools |
-| `llm-training-guide` | Reference-first guide for strategy, troubleshooting, alignment method selection, and training-health metrics. | Method deep dives, hardware + VRAM docs, metric taxonomy |
-| `python-standards` | Apply project-aware Python conventions with PEP 8-first style and progressive reference loading. | Discovery/style/docstring/layout references |
-| `proto-schema-expert` | Draft, review, and explain Protobuf schemas across Editions/Proto3/Proto2. | Type reference, style guide, version-specific docs |
-| `ruff-python-guide` | Introduce, configure, integrate, and troubleshoot Ruff for Python linting and formatting workflows. | Install/config/workflow/integration/migration references |
-| `secret-leak-check` | Detect secret/privacy leakage risks across diffs, commit messages, and git identity contexts. | Detection rules, scope logic, reporting templates |
+## 🛠️ Available Skills
 
-## Quick start
+| Domain & Skill | Description |
+| :--- | :--- |
+| **🤖 Agent Engineering** | |
+| 🪛 [`agent-skills-crafter`](skills/agent-skills-crafter) | Create, edit, evaluate, and optimize new Agent Skills efficiently. |
+| 📜 [`agents-md-crafter`](skills/agents-md-crafter) | Design and update standard AI agent instruction files like `AGENTS.md`. |
+| 📝 [`readme-crafter`](skills/readme-crafter) | Focused documentation agent for creating and revising `README.md` files. |
+| **🧠 AI / Machine Learning** | |
+| 🚀 [`huggingface-accelerate-guide`](skills/huggingface-accelerate-guide) | Guide for Hugging Face Accelerate: distributed training, inference, large models. |
+| 📉 [`llm-training-guide`](skills/llm-training-guide) | Reference-first guide for strategy, VRAM estimation, alignment methods, and health metrics. |
+| **🐍 Python Ecosystem** | |
+| 📏 [`python-standards`](skills/python-standards) | Provide Python style conventions, docstrings, and architectural standard knowledge. |
+| ⚡ [`ruff-python-guide`](skills/ruff-python-guide) | Integrate, configure, and troubleshoot Ruff for Python linting and formatting. |
+| **⚙️ DevOps & Security** | |
+| ☁️ [`cloud-init-crafter`](skills/cloud-init-crafter) | Create and validate cloud-init / user-data scripts for cloud instance provisioning. |
+| 🔒 [`secret-scanner`](skills/secret-scanner) | Perform security scans to detect edge cases, passwords, API tokens, and PII. |
+| 🏗️ [`starlark-expert`](skills/starlark-expert) | Consult and generate scripts written in Starlark (e.g. for Bazel, Buck, etc.). |
+| **🗂️ Data & Schemas** | |
+| 🏷️ [`proto-schema-expert`](skills/proto-schema-expert) | Draft, design, and clarify Protobuf schemas (Proto2/Proto3/Editions). |
 
-### 1) Open in a Dev Container (recommended)
+---
 
-This repo includes a ready-to-use dev container with:
+## ⚡ Quick Start
 
-- Ubuntu base image
-- Git + Git LFS
-- Node.js
-- Python + `pre-commit`
-- VS Code MCP server configuration for Hugging Face
+### 1️⃣ Development Container (Recommended)
 
-In VS Code:
+This repository includes a robust **[Dev Container](https://containers.dev/)** configured with Ubuntu, Python, Pre-commit, Git LFS, and AI agent dependencies.
 
-1. Open the repository
-2. Run: **Dev Containers: Reopen in Container**
+1. Open this repository in Visual Studio Code.
+2. Hit `Ctrl+Shift+P` (or `Cmd+Shift+P` on Mac).
+3. Search and select: **Dev Containers: Reopen in Container**.
 
-### 2) Set up local quality checks
+### 2️⃣ Local Setup
+
+If developing locally:
 
 ```bash
+# Install pre-commit globally or in a virtualenv
 pip install pre-commit
+
+# Install git hook scripts
 pre-commit install
+
+# Run against all files manually
 pre-commit run --all-files
 ```
 
-## Working with skills
+---
 
-### Skill structure convention
+## ✍️ Creating a New Skill
 
-Each skill should typically follow:
+Follow our standard directory topography when authoring new instructions:
 
-- `SKILL.md`: concise workflow + routing guidance
-- `references/`: heavy documentation and deep dives
-- `assets/`: executable templates (when needed)
-- `scripts/`: executable helpers (when needed)
+1. **`SKILL.md`**: Keep it minimal and actionable. This defines the agent's persona, strict rules, and routing logic.
+2. **`references/`**: Heavy documentation and rulesets. Read dynamically by agents only when needed.
+3. **`assets/`**: Executable templates, JSON schemas, or example configurations.
+4. **`scripts/`**: Helpers (e.g., Python validation scripts).
 
-### Authoring principles
+> 💡 **Tip:** Refer to the `agent-skills-crafter` to help generate your new skills!
 
-1. Keep `SKILL.md` concise and actionable.
-2. Move detailed material into `references/`.
-3. Load references progressively based on the user task.
-4. Match existing style and naming conventions.
+---
 
-## Security and quality
-
-Pre-commit hooks enforce:
-
-- whitespace and EOF normalization
-- YAML validation
-- merge conflict detection
-- large file checks (max 2 MB)
-- secret scanning via `detect-secrets`
+> _Managed by AI, built for AI._
+> Check out [`AGENTS.md`](AGENTS.md) to understand how AI operates within this repository.
 
 For CI, repository workflows also run secret scanning checks.
 
-## Contributing
+## 🤝 Contributing
 
-Contributions are welcome.
-
-Suggested flow:
+Contributions are welcome! Suggested flow:
 
 1. Create or update a skill under `skills/`
 2. Keep changes focused and minimal
 3. Run `pre-commit run --all-files`
 4. Open a pull request with a clear summary and rationale
 
-If you are creating a new skill, use the custom agent definition in `.github/agents/create-skill.agent.md` as a structural reference.
+*If you are creating a new skill, use the custom agent definition in `.github/agents/create-skill.agent.md` as a structural reference.*
 
-## License
+## 📄 License
 
-Licensed under the Apache License 2.0. See [LICENSE](LICENSE).
+Licensed under the **Apache License 2.0**. See [LICENSE](LICENSE) for details.
