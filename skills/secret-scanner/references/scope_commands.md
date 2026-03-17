@@ -42,7 +42,7 @@ When a user specifies a target scope for secret scanning, use the following comm
 
 *   **Search for specific file extensions in a directory:**
     ```bash
-    find <directory_path> -type f -name "*.py" -o -name "*.json"
+    find <directory_path> -type f \( -name "*.py" -o -name "*.json" \)
     ```
 
 ## Searching for Patterns (Quick triage)
