@@ -16,6 +16,7 @@ This reference also details whether specific frameworks natively scan for and pa
 - **Primary Locations:** `.github/copilot-instructions.md`, `AGENTS.md`, or specific path files like `.github/instructions/*.instructions.md`
 - **Usage:** Custom instructions for GitHub Copilot Chat, focusing on organizational and repository-level guidelines.
 - **Scans AGENTS.md Automatically?** **Yes**.
+- **Environment Extensions:** Supports extra scan paths via `COPILOT_CUSTOM_INSTRUCTIONS_DIRS` environment variable.
 
 ## Cursor
 - **Primary Locations:** `.cursor/rules/*.mdc` (Directory of Rules) or `.cursorrules` (Root directory)
@@ -31,7 +32,6 @@ This reference also details whether specific frameworks natively scan for and pa
 - **Primary Location:** `GEMINI.md` (Root directory or nested)
 - **Usage:** Foundational mandates for the Gemini CLI agent. Gemini CLI uses a hierarchical memory system where local `GEMINI.md` files override root ones, and explicit prompts override all.
 - **Scans AGENTS.md Automatically?** **Yes**. Gemini CLI will analyze the workspace and read `AGENTS.md` during its research phase if it exists, but `GEMINI.md` takes absolute priority for foundational behavioral mandates.
-- **Environment Extensions:** Supports extra scan paths via `COPILOT_CUSTOM_INSTRUCTIONS_DIRS` environment variable.
 
 ## Claude (Anthropic) / Claude Code
 - **Primary Location:** `CLAUDE.md` (Root directory)
