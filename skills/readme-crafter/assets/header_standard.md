@@ -23,6 +23,6 @@
     <a href="https://github.com/username/repo/network/members"><img src="https://img.shields.io/github/forks/username/repo?style=flat-square" alt="Forks"></a>
     <a href="https://github.com/username/repo/stargazers"><img src="https://img.shields.io/github/stars/username/repo?style=flat-square" alt="Stars"></a>
     <a href="https://github.com/username/repo/issues"><img src="https://img.shields.io/github/issues/username/repo?style=flat-square" alt="Issues"></a>
-    <a href="https://github.com/username/repo/blob/master/LICENSE"><img src="https://img.shields.io/github/license/username/repo?style=flat-square" alt="License"></a>
+    <a href="LICENSE"><img src="https://img.shields.io/github/license/username/repo?style=flat-square" alt="License"></a>
   </p>
 </div>
