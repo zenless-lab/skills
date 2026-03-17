@@ -28,7 +28,7 @@
   <a href="https://github.com/github_username/repo_name/network/members"><img src="https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge" alt="Forks"></a>
   <a href="https://github.com/github_username/repo_name/stargazers"><img src="https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge" alt="Stargazers"></a>
   <a href="https://github.com/github_username/repo_name/issues"><img src="https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge" alt="Issues"></a>
-  <a href="https://github.com/github_username/repo_name/blob/master/LICENSE"><img src="https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge" alt="MIT License"></a>
+  <a href="https://github.com/github_username/repo_name/blob/main/LICENSE"><img src="https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge" alt="License"></a>
 </div>
 
 ---
