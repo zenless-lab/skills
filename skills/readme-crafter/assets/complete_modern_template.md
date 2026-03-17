@@ -108,8 +108,8 @@ This is an example of how to list things you need to use the software and how to
    ```
 5. Change git remote url to avoid accidental pushes to base project
    ```sh
-   git remote set-url origin github_username/repo_name
-   git push -u origin master
+   git remote set-url origin https://github.com/github_username/repo_name.git
+   git push -u origin main
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
