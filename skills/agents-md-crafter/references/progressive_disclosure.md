@@ -1,7 +1,7 @@
 # Progressive Disclosure Strategy
 
 AI context windows, while growing, are not infinite, and providing too much irrelevant information degrades an agent's reasoning capabilities.
-The 2026 standard for managing instruction sets is **Progressive Disclosure**: only feed the AI what it needs for the current task.
+A widely recommended approach for managing instruction sets is **Progressive Disclosure**: only feed the AI what it needs for the current task.
 
 ## The Instruction "Mudball"
 As AI instructions are updated over months, they accumulate "mudball" rules—outdated, highly specific, and often conflicting snippets.
