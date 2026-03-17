@@ -49,7 +49,7 @@ Modular template components to assemble a README. Use these to construct the fin
 - **[Header: Visual](assets/header_visual.md)**: A banner/GIF focused header for visual projects.
 - **[Navigation & Features](assets/navigation_and_features.md)**: Table of contents and feature highlights.
 - **[Getting Started](assets/getting_started.md)**: Prerequisites, Installation, and Usage examples.
-- **[Support & Community](assets/support_and_community.md)**: FAQ, Contributing, License, and Acknowledgements.
+- **[Support & Community](assets/support_and_community.md)**: Contributing, License, and Acknowledgments.
 - **[Badges Collection](assets/badges_collection.md)**: A collection of various markdown badges.
 - **[Architecture Diagram](assets/architecture_diagram.md)**: Examples of using Mermaid for architecture diagrams.
 - **[Contributors & Sponsors](assets/contributors_and_sponsors.md)**: Snippets for showing contributors, backers, and sponsors.
