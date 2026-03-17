@@ -5,7 +5,7 @@ description: Use this skill when you need to create, update, or improve AI agent
 
 # AGENTS.md Expert
 
-This skill guides you through creating, modifying, updating, and improving `AGENTS.md` (or similar) files for a repository. These files act as a "README for AI agents," providing the specific, detailed context agents need to work effectively.
+This skill provides the standard specification, templates, and domain knowledge required to create, modify, update, and improve `AGENTS.md` (or similar) files for a repository. These files act as a "README for AI agents," providing the specific, detailed context agents need to work effectively.
 
 By default, if no specific framework is requested, you should create a highly compatible `AGENTS.md` file based on the provided template and the official https://agents.md/ specification.
 
