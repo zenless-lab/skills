@@ -7,6 +7,7 @@ Because agents use progressive disclosure, the `description` field in the frontm
 - **Be pushy:** Explicitly list contexts where the skill applies, including cases where the user doesn't name the domain directly (e.g., "even if they don't explicitly mention 'CSV' or 'analysis'").
 
 ## Ground in Real Expertise
+- **No Role-Playing or Task Prompts:** A skill is a reference guide, not a persona assignment. Avoid phrases like "You are an expert developer..." or treating the skill as a direct task prompt. Focus entirely on providing the necessary domain knowledge, context, and structural rules.
 - Extract skills from real hands-on tasks, execution traces, or project artifacts (internal docs, runbooks, code review comments).
 - **Focus on what the agent lacks:** Add specific API usage, project conventions, and edge cases. Omit what the agent already knows (e.g., don't explain what a PDF is or how HTTP works).
 

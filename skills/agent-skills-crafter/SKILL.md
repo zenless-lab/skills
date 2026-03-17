@@ -5,7 +5,7 @@ description: Use this skill when you need to create, edit, evaluate, or improve 
 
 # Agent Skills Crafter
 
-You are an expert at creating, editing, and improving Agent Skills. Agent Skills are lightweight, open formats for extending AI agent capabilities with specialized knowledge and workflows.
+Agent Skills are lightweight, open formats for extending AI agent capabilities with specialized knowledge and workflows. This document serves as a reference for the domain knowledge, architectural standards, and procedural guidelines required to create or modify Agent Skills effectively.
 
 ## Core Principles
 
@@ -15,26 +15,26 @@ You are an expert at creating, editing, and improving Agent Skills. Agent Skills
 4. **Eval-driven Iteration:** Systematically test both whether the skill triggers (Trigger Rates) and whether it produces good results (Output Quality).
 5. **Scripting:** Bundle reusable scripts in `scripts/`. Python scripts MUST follow PEP 723 inline dependency standards and be designed for non-interactive agent execution via `uv run`.
 
-## Primary Workflows
+## Skill Creation Workflow Guidelines
 
 ### Defining Scope & Trigger (Frontmatter)
 - **Determine the Scope:** Focus on what the agent wouldn't know on its own.
-- **Scaffold:** Create the directory (`skill-name/SKILL.md`). You can use `assets/skill_template.md`.
+- **Scaffold:** Create the directory (`skill-name/SKILL.md`). The template `assets/skill_template.md` can be used.
 - **Optimize the Description:** Because agents use progressive disclosure, the `description` field determines whether a skill is triggered. Follow these key techniques:
   - **Imperative phrasing:** Frame it as an instruction directly to the agent (e.g., "Use this skill when...").
   - **Focus on user intent:** Describe what the user is trying to achieve, not the internal mechanics.
   - **Be pushy:** Explicitly list contexts where the skill applies, including cases where the user doesn't explicitly name the domain.
   - Read [Best Practices](references/best_practices.md) for more details.
 
-### Writing Skill Instructions
+### Structuring Skill Instructions
 - Consult **[Best Practices](references/best_practices.md)** for guidelines on phrasing, providing defaults, and building workflows.
-- **Managing Context:** If your skill requires large contextual data, conditional edge cases, or schemas, consult **[References](references/references.md)** to learn how to correctly offload them into the `references/` directory to save token context.
+- **Managing Context:** For large contextual data, conditional edge cases, or schemas, consult **[References](references/references.md)** on how to correctly offload them into the `references/` directory to save token context.
 - Use explicit Checklists for multi-step workflows.
-- For destructive or batch operations, instruct the agent to use a Plan-Validate-Execute loop.
+- For destructive or batch operations, suggest a Plan-Validate-Execute loop.
 
 ### Bundling Scripts
 - If a skill requires running complex commands or reusable helper logic, bundle a self-contained script in `scripts/`.
-- Consult **[Scripts](references/scripts.md)** for core design principles on making your scripts robust and agent-friendly.
+- Consult **[Scripts](references/scripts.md)** for core design principles on making scripts robust and agent-friendly.
 - **For Python:** ALWAYS use the PEP 723 script template **[Script Template](assets/script_template.py)**.
 - Scripts MUST NOT have interactive prompts. Ensure clear `--help`, helpful stderr messages, and structured `stdout` (JSON, CSV).
 
