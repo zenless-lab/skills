@@ -17,7 +17,7 @@ When asked to create or modify an `AGENTS.md` file, strictly follow these steps:
 2. **Analyze File Structure:** Print the tree structure of the repository at an appropriate depth (e.g., using `tree -L 2` or equivalent python script/command) to gain a comprehensive understanding of the project's content, tech stack, and module organization. **Crucially:** Because a git repository is constantly changing, do not analyze the file structure too deeply. Focus on the modular structure.
 3. **Scan for Instruction Drift:** Analyze existing instruction files for redundant, outdated, or conflicting rules ("mudballs"). Recommend a refactoring step if files are overly cluttered or contradictory.
 4. **Formulate a Plan:** Based on your findings, formulate a plan to create or update the agent instruction file.
-    - **Single Root File (Default):** By default, maintain a single, comprehensive `AGENTS.md` file in the root directory. Keep the root file minimal (preferably <100 lines) following the Progressive Disclosure principle.
+    - **Single Root File (Default):** By default, maintain a single, comprehensive `AGENTS.md` file in the root directory. Keep the root file minimal (preferably <500 lines) following the Progressive Disclosure principle.
     - **Conditional Progressive Disclosure:** If the file exceeds 500 lines or the project is exceptionally complex, split the file (e.g., using nested `AGENTS.md` or linking to sub-docs like `docs/DATABASE.md`).
     - **Multi-Framework Support:** If the user specifies multiple frameworks (e.g., Copilot, Claude Code, Cursor), implement the **Symlink Strategy** to use `AGENTS.md` as the Single Source of Truth (SSOT).
 5. **Execution:** Create or modify the file based on your plan and the project context.
