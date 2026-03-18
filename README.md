@@ -32,11 +32,16 @@ Each skill retains core operational instructions in `SKILL.md` while deep-dive c
  │  ┣ 📂 agent-skills-crafter/
  │  ┣ 📂 agents-md-crafter/
  │  ┣ 📂 cloud-init-crafter/
+ │  ┣ 📂 google-docstring-crafter/
  │  ┣ 📂 huggingface-accelerate-guide/
  │  ┣ 📂 llm-training-guide/
+ │  ┣ 📂 numpy-docstring-crafter/
  │  ┣ 📂 proto-schema-expert/
+ │  ┣ 📂 python-comment-expert/
+ │  ┣ 📂 python-docstring-expert/
  │  ┣ 📂 python-standards/
  │  ┣ 📂 readme-crafter/
+ │  ┣ 📂 rst-docstring-crafter/
  │  ┣ 📂 ruff-python-guide/
  │  ┣ 📂 secret-scanner/
  │  ┗ 📂 starlark-expert/
@@ -61,6 +66,11 @@ Each skill retains core operational instructions in `SKILL.md` while deep-dive c
 | **🐍 Python Ecosystem** | |
 | 📏 [`python-standards`](skills/python-standards) | Provide Python style conventions, docstrings, and architectural standard knowledge. |
 | ⚡ [`ruff-python-guide`](skills/ruff-python-guide) | Integrate, configure, and troubleshoot Ruff for Python linting and formatting. |
+| 📜 [`python-docstring-expert`](skills/python-docstring-expert) | Expert methodology for evaluating, formatting, and generating Python docstrings. |
+| 💬 [`python-comment-expert`](skills/python-comment-expert) | Expertise in writing, reviewing, and modifying Python logic code comments (not docstrings). |
+| 🇬 [`google-docstring-crafter`](skills/google-docstring-crafter) | Google Style Python Docstring expertise: modules, classes, functions, and formatting. |
+| 🔢 [`numpy-docstring-crafter`](skills/numpy-docstring-crafter) | NumPy Style Python Docstring expertise: scientific ecosystem, parameters, and returns. |
+| 📑 [`rst-docstring-crafter`](skills/rst-docstring-crafter) | Guidance for reStructuredText (reST), Python docstrings, and Sphinx projects. |
 | **⚙️ DevOps & Security** | |
 | ☁️ [`cloud-init-crafter`](skills/cloud-init-crafter) | Create and validate cloud-init / user-data scripts for cloud instance provisioning. |
 | 🔒 [`secret-scanner`](skills/secret-scanner) | Perform security scans to detect edge cases, passwords, API tokens, and PII. |
