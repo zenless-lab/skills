@@ -4,10 +4,10 @@ Inline markup applies within a text block. It cannot be nested.
 
 - **Emphasis:** `*emphasis*` (italics)
 - **Strong Emphasis:** `**strong**` (bold)
-- **Interpreted Text:** `` `interpreted text` `` (role inferred or explicit like `:role:\`text\``).
+- **Interpreted Text:** `` `interpreted text` `` (role inferred or explicit like `` :role:`text` ``).
 - **Inline Literals:** ```` ``inline literals`` ```` (monospaced, no markup interpretation).
 - **Substitution References:** `|substitution|`.
-- **Inline Internal Targets:** `_`target``.
+- **Inline Internal Targets:** `` `_`target` ``.
 - **Footnote References:** `[1]_`, `[#]_`, `[*]_`.
 - **Hyperlink References:** ``` `phrase`_ ``` (named), ``` `phrase`__ ``` (anonymous), `word_`.
 
