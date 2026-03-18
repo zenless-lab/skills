@@ -1,0 +1,11 @@
+# <type>[optional scope][!]: <description>
+# |<----  Using a Maximum Of 50 Characters  ---->|
+
+# [optional body]
+# |<----   Try To Limit Each Line to a Maximum Of 72 Characters   ---->|
+#
+# Focus on what changed and why, not how.
+#
+# [optional footer(s)]
+# BREAKING CHANGE: <description>
+# Refs: <issue-number>
