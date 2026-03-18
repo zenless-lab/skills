@@ -2,12 +2,17 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
 {
 	"name": "Ubuntu Dev Container",
-	"image": "mcr.microsoft.com/devcontainers/universal:noble",
+	"image": "mcr.microsoft.com/devcontainers/base:noble",
 	"features": {
 		"ghcr.io/devcontainers/features/common-utils:2": {
 			"configureZshAsDefaultShell": true
 		},
-		"ghcr.io/devcontainers/features/git-lfs:1": {}
+		"ghcr.io/devcontainers/features/git:1": {},
+		"ghcr.io/devcontainers/features/git-lfs:1": {},
+		"ghcr.io/devcontainers/features/node:1": {},
+		"ghcr.io/devcontainers/features/python:1": {
+			"toolsToInstall": "pre-commit"
+		}
 	},
 	"customizations": {
 		"vscode": {
@@ -24,5 +29,5 @@
 			}
 		}
 	},
-	"postCreateCommand": "pipx install pre-commit && pre-commit install"
+	"postCreateCommand": "pre-commit install"
 }

@@ -24,7 +24,7 @@ This file provides the necessary context, conventions, and instructions for AI a
 - **Code Quality:** Ensure all new Python scripts are properly formatted, include appropriate type hints, and follow general Python best practices (e.g., as guided by `python-standards` and `ruff-python-guide` within this repo).
 
 ## Git & PR Guidelines
-- **Commit Messages:** Follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) standard (e.g., `feat(skill): add new agent skill`, `docs: update LLM training guide`).
+- **Commit Messages:** Follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) standard (e.g., `feat: add new agent skill`, `docs: update LLM training guide`).
 - **Review:** Treat all `SKILL.md` updates critically, as they dictate the behavior of AI agents working across projects.
 
 ## Framework Specific Notes
