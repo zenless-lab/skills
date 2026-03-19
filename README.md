@@ -26,28 +26,15 @@ Each skill retains core operational instructions in `SKILL.md` while deep-dive c
 
 ```text
 📦 skills
+ ┣ 📂 .agents/              # Local agent configuration files
  ┣ 📂 .devcontainer/        # Development environment configuration
- ┣ 📂 .agents/              # Agent configuration files
+ ┣ 📂 .github/              # GitHub-specific configuration
+ ┃  ┗ 📂 agents/            # Reusable agent definition files (.agent.md)
  ┣ 📂 skills/               # Core agent skills
- │  ┣ 📂 agent-skills-crafter/
+ │  ┣ 📂 skill-crafter/
  │  ┣ 📂 agents-md-crafter/
  │  ┣ 📂 cloud-init-crafter/
- │  ┣ 📂 google-docstring-crafter/
- │  ┣ 📂 huggingface-accelerate-guide/
- │  ┣ 📂 llm-training-guide/
- │  ┣ 📂 numpy-docstring-crafter/
- │  ┣ 📂 proto-schema-expert/
- │  ┣ 📂 python-comment-expert/
- │  ┣ 📂 python-docstring-expert/
- │  ┣ 📂 python-standards/
- │  ┣ 📂 readme-crafter/
- │  ┣ 📂 rst-docstring-crafter/
- │  ┣ 📂 ruff-python-guide/
- │  ┣ 📂 secret-scanner/
- │  ┗ 📂 starlark-expert/
- ┣ 📜 AGENTS.md             # Top-level agent instructions
- ┣ 📜 .pre-commit-config.yaml
- ┗ 📜 README.md
+...
 ```
 
 ---
@@ -57,17 +44,17 @@ Each skill retains core operational instructions in `SKILL.md` while deep-dive c
 | Domain & Skill | Description |
 | :--- | :--- |
 | **🤖 Agent Engineering** | |
-| 🪛 [`agent-skills-crafter`](skills/agent-skills-crafter) | Create, edit, evaluate, and optimize new Agent Skills efficiently. |
+| 🪛 [`skill-crafter`](skills/skill-crafter) | Create, edit, evaluate, and optimize new Agent Skills efficiently. |
 | 📜 [`agents-md-crafter`](skills/agents-md-crafter) | Design and update standard AI agent instruction files like `AGENTS.md`. |
 | 📝 [`readme-crafter`](skills/readme-crafter) | Focused documentation agent for creating and revising `README.md` files. |
 | **🧠 AI / Machine Learning** | |
 | 🚀 [`huggingface-accelerate-guide`](skills/huggingface-accelerate-guide) | Guide for Hugging Face Accelerate: distributed training, inference, large models. |
 | 📉 [`llm-training-guide`](skills/llm-training-guide) | Reference-first guide for strategy, VRAM estimation, alignment methods, and health metrics. |
 | **🐍 Python Ecosystem** | |
-| 📏 [`python-standards`](skills/python-standards) | Provide Python style conventions, docstrings, and architectural standard knowledge. |
+| 📏 [`python-standards`](skills/python-standards) | Apply Python coding standards (PEP 8, Google), infer project style, and manage references. |
 | ⚡ [`ruff-python-guide`](skills/ruff-python-guide) | Integrate, configure, and troubleshoot Ruff for Python linting and formatting. |
 | 📜 [`python-docstring-expert`](skills/python-docstring-expert) | Expert methodology for evaluating, formatting, and generating Python docstrings. |
-| 💬 [`python-comment-expert`](skills/python-comment-expert) | Expertise in writing, reviewing, and modifying Python logic code comments (not docstrings). |
+| 💬 [`python-comment-expert`](skills/python-comment-expert) | Expertise in writing, reviewing, and modifying Python logic code comments. |
 | 🇬 [`google-docstring-crafter`](skills/google-docstring-crafter) | Google Style Python Docstring expertise: modules, classes, functions, and formatting. |
 | 🔢 [`numpy-docstring-crafter`](skills/numpy-docstring-crafter) | NumPy Style Python Docstring expertise: scientific ecosystem, parameters, and returns. |
 | 📑 [`rst-docstring-crafter`](skills/rst-docstring-crafter) | Guidance for reStructuredText (reST), Python docstrings, and Sphinx projects. |
@@ -116,7 +103,7 @@ Follow our standard directory topography when authoring new instructions:
 3. **`assets/`**: Executable templates, JSON schemas, or example configurations.
 4. **`scripts/`**: Helpers (e.g., Python validation scripts).
 
-> 💡 **Tip:** Refer to the `agent-skills-crafter` to help generate your new skills!
+> 💡 **Tip:** Refer to the `skill-crafter` to help generate your new skills!
 
 ---
 
@@ -134,7 +121,7 @@ Contributions are welcome! Suggested flow:
 3. Run `pre-commit run --all-files`
 4. Open a pull request with a clear summary and rationale
 
-*If you are creating a new skill, use the custom agent definition in `.github/agents/create-skill.agent.md` as a structural reference.*
+*If you are creating a new skill, use the custom agent definition in `.github/agents/agents-crafter.agent.md` as a structural reference.*
 
 ## 📄 License
 

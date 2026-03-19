@@ -1,9 +1,9 @@
 ---
-name: agent-skills-crafter
+name: skill-crafter
 description: Use this skill when you need to create, edit, evaluate, or improve Agent Skills. Trigger this even if the user just asks to build a new agent workflow, refine an existing AI capability, write support scripts for an agent, or optimize prompt descriptions and outputs.
 ---
 
-# Agent Skills Crafter
+# Skill Crafter
 
 Agent Skills are lightweight, open formats for extending AI agent capabilities with specialized knowledge and workflows. This document serves as a reference for the domain knowledge, architectural standards, and procedural guidelines required to create or modify Agent Skills effectively.
 
