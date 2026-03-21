@@ -10,7 +10,7 @@ Agent Skills are lightweight, open formats for extending AI agent capabilities w
 ## Core Principles
 
 1. **Discovery is Paramount (The Description):** Agents use progressive disclosure. They only read the `name` and `description` to decide whether to activate a skill. Writing a highly optimized, intent-focused description is the most universally critical step in skill creation.
-2. **Progressive Disclosure:** Keep `SKILL.md` concise (< 5000 tokens). Move detailed reference material to `references/` and large templates/assets to `assets/`.
+2. **Progressive Disclosure:** Keep `SKILL.md` concise (< 5000 tokens). Move detailed reference material to `references/` and large templates/assets to `assets/`. Balance the tokens spent in `SKILL.md` on disclosure guidance against the size and number of reference files. Split references by topic and likely access pattern so agents can load only what they need. Avoid a catch-all file like `EVERYTHING.md` that is always loaded, because it defeats the token-saving purpose of progressive disclosure. Also avoid splitting content so finely that the routing instructions in `SKILL.md` become verbose enough to waste the same tokens you were trying to save.
 3. **Domain Knowledge:** Skills encapsulate procedural knowledge and rich context (e.g., project conventions, edge cases). Provide the "why" so the agent makes context-dependent decisions.
 4. **Eval-driven Iteration:** Systematically test both whether the skill triggers (Trigger Rates) and whether it produces good results (Output Quality).
 5. **Scripting:** Bundle reusable scripts in `scripts/`. Python scripts MUST follow PEP 723 inline dependency standards and be designed for non-interactive agent execution via `uv run`.
@@ -28,7 +28,7 @@ Agent Skills are lightweight, open formats for extending AI agent capabilities w
 
 ### Structuring Skill Instructions
 - Consult **[Best Practices](references/best_practices.md)** for guidelines on phrasing, providing defaults, and building workflows.
-- **Managing Context:** For large contextual data, conditional edge cases, or schemas, consult **[References](references/references.md)** on how to correctly offload them into the `references/` directory to save token context.
+- **Managing Context:** For large contextual data, conditional edge cases, or schemas, consult **[References](references/references.md)** on how to correctly offload them into the `references/` directory to save token context. Choose a reference granularity that matches how the agent is likely to load information: neither a single always-read dump file nor an excessive number of tiny fragments.
 - Use explicit Checklists for multi-step workflows.
 - For destructive or batch operations, suggest a Plan-Validate-Execute loop.
 

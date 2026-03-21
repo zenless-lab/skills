@@ -8,7 +8,8 @@ Skills use **progressive disclosure**. This means `SKILL.md` should remain a hig
 - **Structured Data:** Large JSON schemas, YAML templates, or extensive CSV lookup tables should be stored as references or assets.
 
 ## Best Practices for Reference Content
-- **Focus and Isolate:** A single reference file should cover a single, coherent topic. Don't create a massive `EVERYTHING.md` file. Split it up logically (e.g., `schema.md`, `error_codes.md`, `style_guide.md`).
+- **Focus and Isolate:** A single reference file should cover a single, coherent topic. Don't create a massive `EVERYTHING.md` file. If one reference is effectively always loaded, it is not saving tokens; split it by topic and by the agent's likely decision points (e.g., `schema.md`, `error_codes.md`, `style_guide.md`).
+- **Split at the Right Granularity:** Balance `SKILL.md` disclosure cost against reference size. If references are too broad, the agent pulls in unnecessary context. If references are too fragmented, `SKILL.md` needs too much routing text to explain when to open each file. Prefer a small set of logically grouped files that match how an agent would actually seek help during execution.
 - **Clear Headings:** Use clear, hierarchical Markdown headings (`##`, `###`). Agents use headings to quickly navigate and find the exact piece of information they need when scanning files.
 - **Provide "Why" and "How":** Don't just dump an API schema. Include snippets showing *how* to use the API and *why* certain parameters are required. Context is just as important as the facts.
 
