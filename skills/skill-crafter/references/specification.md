@@ -1,37 +1,193 @@
-# Agent Skills Specification
+# Skill Specification
 
-## Directory Structure
-A skill is a directory containing, at minimum, a `SKILL.md` file:
-```
+Use this file when you need the exact structural and frontmatter rules for a skill.
+
+## Directory structure
+
+A skill is a directory containing at minimum:
+
+```text
 skill-name/
-├── SKILL.md          # Required: metadata + instructions
-├── scripts/          # Optional: executable code
-├── references/       # Optional: documentation
-└── assets/           # Optional: templates, resources
+├── SKILL.md
+├── scripts/      # optional
+├── references/   # optional
+├── assets/       # optional
+└── ...
 ```
 
-## `SKILL.md` Frontmatter
+## `SKILL.md` format
 
-YAML frontmatter is REQUIRED at the top of `SKILL.md` (bounded by `---`).
+`SKILL.md` must contain YAML frontmatter followed by Markdown instructions.
 
-| Field           | Required | Constraints |
-| --------------- | -------- | ----------- |
-| `name`          | Yes      | Max 64 chars. Lowercase letters, numbers, and hyphens only. Must not start/end with a hyphen. Must not contain consecutive hyphens (`--`). Must match parent directory name. |
-| `description`   | Yes      | Max 1024 chars. Non-empty. Describes what the skill does and when to use it. Should use imperative phrasing (e.g., "Use this skill when..."). |
-| `license`       | No       | License name or reference to a bundled license file. |
-| `compatibility` | No       | Max 500 chars. Indicates environment requirements (e.g., intended product, system packages, network access). |
-| `metadata`      | No       | Arbitrary key-value mapping for additional metadata. |
-| `allowed-tools` | No       | Space-delimited list of pre-approved tools the skill may use. (Experimental) |
+### Required frontmatter
 
-## Progressive Disclosure Structure
-1. **Metadata (~50-100 tokens):** The `name` and `description` fields are loaded at session startup.
-2. **Instructions (< 5000 tokens recommended):** The full `SKILL.md` body is loaded when the skill is activated. Keep the main `SKILL.md` under 500 lines.
-3. **Resources (variable tokens):** Files in `scripts/`, `references/`, and `assets/` are loaded on demand by the agent when referenced in `SKILL.md`. Use relative paths from the skill root (e.g., `references/guide.md`).
+- `name`
+- `description`
 
-## File References
-When referencing other files within the skill, use relative paths from the skill root:
-```markdown
-See [the reference guide](references/REFERENCE.md) for details.
-Run the script: `scripts/extract.py`
+### Optional frontmatter
+
+- `license`
+- `compatibility`
+- `metadata`
+- `allowed-tools`
+
+## Field constraints
+
+### `name`
+
+- 1 to 64 characters
+- lowercase letters, numbers, and hyphens only
+- must not start or end with `-`
+- must not contain consecutive hyphens
+- must match the parent directory name
+
+Valid examples:
+
+```yaml
+name: pdf-processing
+name: data-analysis
+name: code-review
 ```
-Avoid deeply nested reference chains. Keep references one level deep from `SKILL.md`.
+
+Invalid examples:
+
+```yaml
+name: PDF-Processing
+name: -pdf
+name: pdf--processing
+```
+
+### `description`
+
+- 1 to 1024 characters
+- non-empty
+- should describe both what the skill does and when to use it
+- should contain intent-language that helps triggering
+
+Good:
+
+```yaml
+description: Extract text and tables from PDFs, fill forms, and merge files. Use this skill when working with PDF documents, form workflows, or document extraction tasks.
+```
+
+Poor:
+
+```yaml
+description: Helps with PDFs.
+```
+
+### `license`
+
+- optional
+- use a short identifier or point to a bundled license file
+
+Example:
+
+```yaml
+license: Proprietary. LICENSE.txt has complete terms
+```
+
+### `compatibility`
+
+- optional
+- 1 to 500 characters if present
+- mention only real environment constraints
+
+Examples:
+
+```yaml
+compatibility: Requires Python 3.14+ and uv
+compatibility: Requires git, jq, docker, and internet access
+```
+
+### `metadata`
+
+- optional key-value mapping
+- use for extra properties not defined by the spec
+
+Example:
+
+```yaml
+metadata:
+  author: example-org
+  version: "1.0"
+```
+
+### `allowed-tools`
+
+- optional
+- space-delimited list
+- experimental and client-dependent
+
+Example:
+
+```yaml
+allowed-tools: Bash(git:*) Bash(jq:*) Read
+```
+
+## Body guidance
+
+The Markdown body has no rigid schema, but it should contain only what helps the agent do the work. Recommended content:
+
+- step-by-step workflow
+- selection rules
+- output expectations
+- examples when they reduce ambiguity
+- explicit links to references
+
+Avoid turning `SKILL.md` into a dump of all background knowledge. Move details to `references/`.
+
+## Progressive disclosure
+
+Skills should be organized in three layers:
+
+- Metadata: `name` and `description`, loaded for all skills
+- Instructions: `SKILL.md` body, loaded when the skill triggers
+- Resources: `scripts/`, `references/`, and `assets/`, loaded only as needed
+
+Guidelines:
+
+- keep `SKILL.md` under roughly 500 lines
+- split long variant-specific material into separate reference files
+- keep reference links one level deep from `SKILL.md`
+
+## Optional directories
+
+### `scripts/`
+
+Use for executable logic that should be deterministic or reused. Scripts should:
+
+- be self-contained where practical
+- produce concise errors
+- handle expected bad inputs
+- document or inline their dependencies
+
+### `references/`
+
+Use for detailed material an agent may need on demand, such as:
+
+- schemas
+- API details
+- workflow variants
+- edge-case guidance
+
+Keep files focused and discoverable from `SKILL.md`.
+
+### `assets/`
+
+Use for static resources that are copied into outputs or serve as templates, such as:
+
+- starter code
+- config templates
+- sample fixtures
+- diagrams or images
+
+## Validation checklist
+
+- directory name equals frontmatter `name`
+- `name` satisfies all naming rules
+- `description` states what and when
+- frontmatter is valid YAML
+- references linked from `SKILL.md` are real and useful
+- no extra documentation files were added without need
+- scripts, references, and assets each have a clear role
