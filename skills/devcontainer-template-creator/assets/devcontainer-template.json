@@ -1,0 +1,21 @@
+{
+    "id": "my-template",
+    "version": "1.0.0",
+    "name": "My Template",
+    "description": "A scaffolded dev container template.",
+    "publisher": "my-org",
+    "options": {
+        "imageVariant": {
+            "type": "string",
+            "description": "Specify the base OS variant.",
+            "proposals": [
+                "debian-11",
+                "ubuntu-22.04"
+            ],
+            "default": "debian-11"
+        }
+    },
+    "optionalPaths": [
+        "README.md"
+    ]
+}
