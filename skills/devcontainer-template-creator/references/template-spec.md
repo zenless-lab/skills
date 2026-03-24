@@ -45,7 +45,7 @@ The `options` property allows tools to prompt the user to choose configurations.
     "installMaven": {
       "type": "boolean",
       "description": "Install Maven.",
-      "default": "false"
+      "default": false
     }
   }
 }
