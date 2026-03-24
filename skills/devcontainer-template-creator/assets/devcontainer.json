@@ -1,0 +1,13 @@
+{
+    "name": "My Dev Container",
+    "image": "mcr.microsoft.com/devcontainers/base:${templateOption:imageVariant}",
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {}
+    },
+    "customizations": {
+        "vscode": {
+            "settings": {},
+            "extensions": []
+        }
+    }
+}
