@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-# Optional: Import test library
+# Import test library (provided by the devcontainer CLI)
 source dev-container-features-test-lib
 
 # Use the `check` command to assert success.
