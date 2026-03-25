@@ -47,6 +47,12 @@ Each skill retains core operational instructions in `SKILL.md` while deep-dive c
 | 🪛 [`skill-crafter`](skills/skill-crafter) | Create, edit, evaluate, and optimize new Agent Skills efficiently. |
 | 📜 [`agents-md-crafter`](skills/agents-md-crafter) | Design and update standard AI agent instruction files like `AGENTS.md`. |
 | 📝 [`readme-crafter`](skills/readme-crafter) | Focused documentation agent for creating and revising `README.md` files. |
+| ✅ [`conventional-commits`](skills/conventional-commits) | Standardize git commit messages with Conventional Commits 1.0.0 and 50/72 rules. |
+| **🧰 Dev Environment & Automation** | |
+| 📦 [`devcontainer-creator`](skills/devcontainer-creator) | Create, edit, and update `.devcontainer/devcontainer.json` development environments. |
+| 🧩 [`devcontainer-feature-creator`](skills/devcontainer-feature-creator) | Create and maintain reusable Dev Container Features with install/test scaffolding. |
+| 🏗️ [`devcontainer-prebuild-image`](skills/devcontainer-prebuild-image) | Configure, build, and publish pre-built Dev Container images. |
+| 🧱 [`devcontainer-template-creator`](skills/devcontainer-template-creator) | Create and distribute Dev Container Templates with metadata and tests. |
 | **🧠 AI / Machine Learning** | |
 | 🚀 [`huggingface-accelerate-guide`](skills/huggingface-accelerate-guide) | Guide for Hugging Face Accelerate: distributed training, inference, large models. |
 | 📉 [`llm-training-guide`](skills/llm-training-guide) | Reference-first guide for strategy, VRAM estimation, alignment methods, and health metrics. |
@@ -58,6 +64,7 @@ Each skill retains core operational instructions in `SKILL.md` while deep-dive c
 | 🇬 [`google-docstring-crafter`](skills/google-docstring-crafter) | Google Style Python Docstring expertise: modules, classes, functions, and formatting. |
 | 🔢 [`numpy-docstring-crafter`](skills/numpy-docstring-crafter) | NumPy Style Python Docstring expertise: scientific ecosystem, parameters, and returns. |
 | 📑 [`rst-docstring-crafter`](skills/rst-docstring-crafter) | Guidance for reStructuredText (reST), Python docstrings, and Sphinx projects. |
+| 🧪 [`noxfile-crafter`](skills/noxfile-crafter) | Create, edit, and modernize `noxfile.py` sessions for automation and CI workflows. |
 | **⚙️ DevOps & Security** | |
 | ☁️ [`cloud-init-crafter`](skills/cloud-init-crafter) | Create and validate cloud-init / user-data scripts for cloud instance provisioning. |
 | 🔒 [`secret-scanner`](skills/secret-scanner) | Perform security scans to detect edge cases, passwords, API tokens, and PII. |
