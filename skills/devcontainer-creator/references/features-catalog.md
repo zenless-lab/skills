@@ -48,7 +48,7 @@ They are hosted on the GitHub Container Registry (`ghcr.io`).
 
 ### System & Infrastructure
 *   `ghcr.io/devcontainers/features/common-utils:2`: Installs a set of common command line utilities, Oh My Zsh!, and sets up a non-root user. [Documentation](https://github.com/devcontainers/features/tree/main/src/common-utils)
-*   `ghcr.io/devcontainers/features/desktop-lite:1`: Adds a lightweight Fluxbox based desktop to the container that can be accessed using a VNC viewer or the web. [Documentation](https://github.com/devcontainers/features/tree/main/src/desktop-lite)
+*   `ghcr.io/devcontainers/features/desktop-lite:1`: Adds a lightweight Fluxbox-based desktop to the container that can be accessed using a VNC viewer or the web. [Documentation](https://github.com/devcontainers/features/tree/main/src/desktop-lite)
 *   `ghcr.io/devcontainers/features/sshd:1`: Adds a SSH server into a container so that you can use an external terminal, sftp, or SSHFS to interact with it. [Documentation](https://github.com/devcontainers/features/tree/main/src/sshd)
 *   `ghcr.io/devcontainers/features/nvidia-cuda:2`: Installs shared libraries for NVIDIA CUDA. [Documentation](https://github.com/devcontainers/features/tree/main/src/nvidia-cuda)
 *   `ghcr.io/devcontainers/features/hugo:1`: Installs Hugo, a popular open-source static site generator written in Go. [Documentation](https://github.com/devcontainers/features/tree/main/src/hugo)
