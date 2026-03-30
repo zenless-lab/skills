@@ -32,7 +32,7 @@ Example:
 
 ```text
 # chezmoi:template:left-delimiter=[[
-# chezmoi:template:right-delimiter= ]]
+# chezmoi:template:right-delimiter=]]
 user = [[ .email | quote ]]
 ```
 
