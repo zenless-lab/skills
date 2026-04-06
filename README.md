@@ -67,7 +67,7 @@ Each skill retains core operational instructions in `SKILL.md` while deep-dive c
 | 🧪 [`noxfile-crafter`](skills/noxfile-crafter) | Create, edit, and modernize `noxfile.py` sessions for automation and CI workflows. |
 | **⚙️ DevOps & Security** | |
 | ☁️ [`cloud-init-crafter`](skills/cloud-init-crafter) | Create and validate cloud-init / user-data scripts for cloud instance provisioning. |
-| 🛡️ [`security-audit`](skills/security-audit) | Audit staged changes, commits, directories, or repos for secrets, PII, binary-document exposure, and git identity leakage. |
+| 🛡️ [`data-leakage-prevention`](skills/data-leakage-prevention) | Audit staged changes, commits, directories, or repos for secrets, PII, binary-document exposure, and git identity leakage. |
 | 🏗️ [`starlark-expert`](skills/starlark-expert) | Consult and generate scripts written in Starlark (e.g. for Bazel, Buck, etc.). |
 | **🗂️ Data & Schemas** | |
 | 🏷️ [`proto-schema-expert`](skills/proto-schema-expert) | Draft, design, and clarify Protobuf schemas (Proto2/Proto3/Editions). |

@@ -1,9 +1,9 @@
 ---
-name: security-audit
+name: data-leakage-prevention
 description: Audit staged changes, modified files, commits, pull requests, repositories, directories, and single files for secrets, PII leakage, compliance issues, binary-document exposure, and git identity disclosure. Use this skill during code submission checks or general file reviews when you need hybrid static tooling plus semantic triage.
 ---
 
-# Security Audit
+# Data Leakage Prevention
 
 Use this skill for submission-time security checks and general file compliance reviews. Combine semantic review with deterministic tooling, and make the audit boundary explicit before any scan starts.
 

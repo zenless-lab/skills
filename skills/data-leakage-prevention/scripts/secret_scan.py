@@ -310,7 +310,7 @@ def read_text_file(path: Path, max_bytes: int) -> tuple[str | None, str | None]:
 
 def create_temp_file_from_stdin(path_label: str) -> tuple[Path, str]:
     content = sys.stdin.read()
-    temp_dir = Path(tempfile.mkdtemp(prefix="security-audit-"))
+    temp_dir = Path(tempfile.mkdtemp(prefix="data-leakage-prevention-"))
     temp_file = temp_dir / Path(path_label).name
     temp_file.write_text(content, encoding="utf-8")
     return temp_file, content
