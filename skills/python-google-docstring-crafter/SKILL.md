@@ -1,5 +1,5 @@
 ---
-name: google-docstring-crafter
+name: python-google-docstring-crafter
 description: Use this skill when you need to write or refactor Python docstrings and comments according to the Google Python Style Guide. Trigger this even if the user just asks to 'document the code', 'add comments', or 'fix docstrings' in a Python project.
 license: Apache-2.0
 ---

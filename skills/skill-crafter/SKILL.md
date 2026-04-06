@@ -158,7 +158,7 @@ Requirements:
 - Emit concise, agent-friendly stdout and actionable errors.
 - Handle common edge cases and invalid inputs explicitly.
 
-Use `assets/uv_script.py` as the starting template when helpful. See `references/script_standards.md` for more detail.
+Use [assets/uv_script.py](assets/uv_script.py) as the starting template when helpful. See [Script Standards](references/script_standards.md) for more detail.
 
 ## Description optimization
 
@@ -176,15 +176,16 @@ When refining descriptions:
 - revise based on general intent categories, not one-off keywords
 - keep the final text within spec limits
 
-See `references/optimizing_descriptions.md` for the detailed loop.
+See [Optimizing Descriptions](references/optimizing_descriptions.md) for the detailed loop.
 
 ## Detailed references
 
 Load these only when needed:
 
-- `references/specification.md` for the detailed skill format and limits
-- `references/optimizing_descriptions.md` for trigger-quality guidance
-- `references/script_standards.md` for Python script expectations with PEP 723 and `uv run`
+- [Specification](references/specification.md) for the detailed skill format and limits
+- [Optimizing Descriptions](references/optimizing_descriptions.md) for trigger-quality guidance
+- [Script Standards](references/script_standards.md) for Python script expectations with PEP 723 and `uv run`
+- [MCP Documentation](references/mcp_documentation.md) for adding MCP servers to access official documentation from [agentskills.io/mcp](https://agentskills.io/mcp)
 
 ## Output expectations
 
@@ -197,4 +198,11 @@ When delivering a new or updated skill:
 - ensure scripts and assets exist only when they materially help
 - ensure the final structure follows the rules in `references/specification.md`
 
-If you are unsure about a format constraint, consult `references/specification.md` before inventing a local convention.
+If you are unsure about a format constraint, consult [Specification](references/specification.md) before inventing a local convention.
+
+If [Specification](references/specification.md) does not resolve the uncertainty, use the `skills-spec` MCP server to look it up in the official documentation:
+
+1. Call `search_agent_skills` with a focused query (e.g. `"frontmatter mcp field"`, `"skill description limits"`).
+2. If the snippet is incomplete, call `get_page_agent_skills` with the page path from the result.
+
+See [MCP Documentation](references/mcp_documentation.md) for tool parameter details and setup instructions.

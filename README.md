@@ -53,7 +53,7 @@ Each skill retains core operational instructions in `SKILL.md` while deep-dive c
 | **🐍 Python Ecosystem** | |
 | 📜 [`python-docstring-expert`](skills/python-docstring-expert) | Expert methodology for evaluating, formatting, and generating Python docstrings. |
 | 💬 [`python-comment-expert`](skills/python-comment-expert) | Expertise in writing, reviewing, and modifying Python logic code comments. |
-| 🇬 [`google-docstring-crafter`](skills/google-docstring-crafter) | Google Style Python Docstring expertise: modules, classes, functions, and formatting. |
+| 🇬 [`python-google-docstring-crafter`](skills/python-google-docstring-crafter) | Google Style Python Docstring expertise: modules, classes, functions, and formatting. |
 | **⚙️ Security** | |
 | 🛡️ [`data-leakage-prevention`](skills/data-leakage-prevention) | Audit staged changes, commits, directories, or repos for secrets, PII, binary-document exposure, and git identity leakage. |
 
