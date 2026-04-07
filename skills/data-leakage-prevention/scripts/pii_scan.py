@@ -14,6 +14,10 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 
 
+CUDA_CHECK_COMMAND = "command -v nvidia-smi >/dev/null 2>&1 && nvidia-smi -L >/dev/null 2>&1"
+CPU_INDEX_URL = "https://download.pytorch.org/whl/cpu"
+
+
 DEFAULT_TEXT_EXTENSIONS = {
     ".c",
     ".cc",
@@ -83,7 +87,13 @@ class FindingRecord:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Scan files for PII using Microsoft Presidio with a Stanza NLP engine."
+        description="Scan files for PII using Microsoft Presidio with a Stanza NLP engine.",
+        epilog=(
+            "Before running with uv, check CUDA once with: "
+            f"{CUDA_CHECK_COMMAND}. If it fails, run with "
+            f"'uv run --default-index {CPU_INDEX_URL} ...'. "
+            "First-time dependency installation can take longer on CPU wheels."
+        ),
     )
     parser.add_argument(
         "paths",
@@ -189,7 +199,11 @@ def create_analyzer(language: str):
         from presidio_analyzer.nlp_engine import StanzaNlpEngine
     except ImportError as exc:
         raise SystemExit(
-            "Failed to import Presidio. Run this script with uv so dependencies from the PEP 723 header are installed."
+            "Failed to import Presidio. Run this script with uv so dependencies "
+            "from the PEP 723 header are installed. Check CUDA first with "
+            f"'{CUDA_CHECK_COMMAND}'. If CUDA is unavailable, run with "
+            f"'uv run --default-index {CPU_INDEX_URL} ...'. "
+            "CPU dependency installation may take longer."
         ) from exc
 
     try:

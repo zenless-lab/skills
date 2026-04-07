@@ -49,23 +49,34 @@ Use `fast review` for:
 
 Escalate from fast review to targeted semantic review when automation finds something material.
 
+## CUDA-Aware `uv run` Invocation
+
+Before running `pii_scan.py`, run a simple CUDA availability check once in the current environment:
+
+```bash
+command -v nvidia-smi >/dev/null 2>&1 && nvidia-smi -L >/dev/null 2>&1
+```
+
+- If the command succeeds, run with normal `uv run`.
+- If the command fails, run with `uv run --default-index https://download.pytorch.org/whl/cpu ...` so PyTorch-related dependencies resolve to CPU wheels.
+
 ## Scan Procedure
 
 ### Deep Review
 
 1. Read the files or the relevant diff hunks.
 2. Perform semantic fuzz review for secrets, PII, unsafe metadata, and context that changes severity.
-3. Run [pii_scan.py](scripts/pii_scan.py) for Presidio-based PII detection.
+3. Run [pii_scan.py](scripts/pii_scan.py) for Presidio-based PII detection with CUDA-aware `uv run` selection.
 4. Run [secret_scan.py](scripts/secret_scan.py) for detect-secrets-based secret detection.
 5. If `.pre-commit-config.yaml` exists and already contains relevant scanning hooks, run the matching pre-commit hooks instead of inventing a parallel workflow.
 6. Reconcile semantic findings with tool findings and classify likely false positives explicitly.
 
-Run the bundled Python scripts with `uv run` so their PEP 723 dependencies are installed automatically. Do not invoke them with plain `python` unless dependency management has already been handled separately.
+Run the bundled Python scripts with `uv run` so their PEP 723 dependencies are installed automatically. Do not invoke them with plain `python` unless dependency management has already been handled separately. For `pii_scan.py`, choose `uv run` arguments based on the CUDA check above.
 
 ### Fast Review
 
 1. Skip broad semantic reading.
-2. Run [pii_scan.py](scripts/pii_scan.py) and [secret_scan.py](scripts/secret_scan.py).
+2. Run [pii_scan.py](scripts/pii_scan.py) and [secret_scan.py](scripts/secret_scan.py), applying the same CUDA-aware `uv run` rule for `pii_scan.py`.
 3. If `.pre-commit-config.yaml` exists and already contains relevant scanning hooks, run the matching hooks.
 4. Inspect only flagged locations or obviously high-risk files semantically.
 
