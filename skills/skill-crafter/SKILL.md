@@ -185,7 +185,7 @@ Load these only when needed:
 - [Specification](references/specification.md) for the detailed skill format and limits
 - [Optimizing Descriptions](references/optimizing_descriptions.md) for trigger-quality guidance
 - [Script Standards](references/script_standards.md) for Python script expectations with PEP 723 and `uv run`
-- [MCP Documentation](references/mcp_documentation.md) for adding MCP servers to access official documentation from [agentskills.io/mcp](https://agentskills.io/mcp)
+- [Official MCP](references/official_mcp.md) for adding MCP servers to access official documentation from [agentskills.io/mcp](https://agentskills.io/mcp)
 
 ## Output expectations
 
@@ -205,4 +205,4 @@ If [Specification](references/specification.md) does not resolve the uncertainty
 1. Call `search_agent_skills` with a focused query (e.g. `"frontmatter mcp field"`, `"skill description limits"`).
 2. If the snippet is incomplete, call `get_page_agent_skills` with the page path from the result.
 
-See [MCP Documentation](references/mcp_documentation.md) for tool parameter details and setup instructions.
+See [Official MCP](references/official_mcp.md) for tool parameter details and setup instructions.
