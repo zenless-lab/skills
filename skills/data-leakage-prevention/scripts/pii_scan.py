@@ -91,7 +91,7 @@ def build_parser() -> argparse.ArgumentParser:
         epilog=(
             "Before running with uv, check CUDA once with: "
             f"{CUDA_CHECK_COMMAND}. If it fails, run with "
-            f"'uv run --default-index {CPU_INDEX_URL} ...'. "
+            f"'uv run --extra-index-url {CPU_INDEX_URL} --with torch ...'. "
             "First-time dependency installation can take longer on CPU wheels."
         ),
     )
@@ -202,7 +202,7 @@ def create_analyzer(language: str):
             "Failed to import Presidio. Run this script with uv so dependencies "
             "from the PEP 723 header are installed. Check CUDA first with "
             f"'{CUDA_CHECK_COMMAND}'. If CUDA is unavailable, run with "
-            f"'uv run --default-index {CPU_INDEX_URL} ...'. "
+            f"'uv run --extra-index-url {CPU_INDEX_URL} --with torch ...'. "
             "CPU dependency installation may take longer."
         ) from exc
 
