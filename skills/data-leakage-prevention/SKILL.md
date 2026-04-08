@@ -58,7 +58,7 @@ command -v nvidia-smi >/dev/null 2>&1 && nvidia-smi -L >/dev/null 2>&1
 ```
 
 - If the command succeeds, run with normal `uv run`.
-- If the command fails, run with `uv run --default-index https://download.pytorch.org/whl/cpu ...` so PyTorch-related dependencies resolve to CPU wheels.
+- If the command fails, run with `uv run --extra-index-url https://download.pytorch.org/whl/cpu --with torch ...` so PyTorch-related dependencies resolve to CPU wheels.
 
 ## Scan Procedure
 
