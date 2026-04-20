@@ -43,11 +43,6 @@ Use this checklist before moving from Short Format to Long Format:
 - [ ] The diff does not show important background, a tradeoff, a risk, or a consequence.
 - [ ] A future reader should not miss a warning, limitation, or migration note.
 
-Check these questions in order:
-1. Would the title alone leave the reason for the change unclear?
-2. Is there non-obvious background, a tradeoff, a risk, or a consequence that the diff does not show?
-3. Is there a warning, limitation, or migration note a future reader should not miss?
-
 If all answers are No, use Short Format. If any answer is Yes, use Long Format.
 
 ### 3. Determine Type Using Priority Order
