@@ -4,7 +4,10 @@
 # [optional body]
 # |<----   Try To Limit Each Line to a Maximum Of 72 Characters   ---->|
 #
-# Focus on what changed and why, not how.
+# Explain why the change exists, what problem it solves,
+# and any important consequences. Do not describe how the
+# code was implemented unless that implementation choice is
+# itself the key context.
 #
 # [optional footer(s)]
 # BREAKING CHANGE: <description>
