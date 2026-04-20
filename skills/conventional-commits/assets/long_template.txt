@@ -1,5 +1,6 @@
 <type>[optional scope][!]: <description>
 
-[body]
+[body: why this change was needed, what problem it solves,
+and any notable side effects or constraints]
 
 [footer(s)]
