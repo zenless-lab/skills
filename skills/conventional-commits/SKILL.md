@@ -54,25 +54,25 @@ If all answers are No, use Short Format. If any answer is Yes, use Long Format.
 Classify the commit by answering these questions from top to bottom. The first `Yes` decides the type. Do not keep scanning once a rule matches.
 
 1. **Does the commit add a new capability, endpoint, command, option, UI flow, or other behavior that did not exist before?**
-	*   **Yes:** use `feat`.
-	*   Use `feat` ONLY when the primary effect is adding capability.
-	*   Do not downgrade to `refactor` or `chore` when new behavior is introduced.
+   *   **Yes:** use `feat`.
+   *   Use `feat` ONLY when the primary effect is adding capability.
+   *   Do not downgrade to `refactor` or `chore` when new behavior is introduced.
 2. **Does the commit correct wrong behavior, a regression, a defect, a crash, incorrect output, a broken integration, or another bug?**
-	*   **Yes:** use `fix`.
-	*   Use `fix` ONLY when behavior was incorrect before the change and is corrected after the change.
-	*   Do not use `refactor` when the commit fixes externally observable incorrect behavior.
+   *   **Yes:** use `fix`.
+   *   Use `fix` ONLY when behavior was incorrect before the change and is corrected after the change.
+   *   Do not use `refactor` when the commit fixes externally observable incorrect behavior.
 3. **Does the commit primarily improve performance WITHOUT intentionally changing behavior or adding features?**
-	*   **Yes:** use `perf`.
-	*   Use `perf` ONLY when performance is the reason for the change.
-	*   Do not use `refactor` when performance improvement is the primary intent.
+   *   **Yes:** use `perf`.
+   *   Use `perf` ONLY when performance is the reason for the change.
+   *   Do not use `refactor` when performance improvement is the primary intent.
 4. **Does the commit change documentation ONLY, WITHOUT changing runtime code, tests, build files, or generated behavior?**
-	*   **Yes:** use `docs`.
+   *   **Yes:** use `docs`.
 5. **Does the commit change formatting, whitespace, naming style, or lint-driven presentation ONLY, WITHOUT changing behavior, documentation meaning, tests, or build configuration?**
-	*   **Yes:** use `style`.
+   *   **Yes:** use `style`.
 6. **Does the commit restructure existing code WITHOUT changing externally observable behavior and WITHOUT performance as the primary goal?**
-	*   **Yes:** use `refactor`.
-	*   Use `refactor` ONLY for internal restructuring.
-	*   Do not use `refactor` if `fix`, `feat`, or `perf` already matched.
+   *   **Yes:** use `refactor`.
+   *   Use `refactor` ONLY for internal restructuring.
+   *   Do not use `refactor` if `fix`, `feat`, or `perf` already matched.
 7. **Does the commit add, remove, or rewrite tests ONLY, WITHOUT changing production behavior, build tooling, or CI workflows?**
 	*   **Yes:** use `test`.
 8. **Does the commit change build, packaging, dependency resolution, release tooling, compiler configuration, bundler configuration, or artifact generation?**
