@@ -3,7 +3,7 @@ name: programming-guidelines
 description: Always load this skill before any programming task — writing, editing, reviewing, debugging, refactoring, or generating code in any language or framework. Defines universal coding standards.
 license: MIT
 metadata:
-  - references:
+  references:
     - https://x.com/karpathy/status/2015883857489522876
     - https://github.com/forrestchang/andrej-karpathy-skills
 ---
