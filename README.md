@@ -44,6 +44,7 @@ Each skill retains core operational instructions in `SKILL.md` while deep-dive c
 | Domain & Skill | Description |
 | :--- | :--- |
 | **🤖 Agent Engineering** | |
+| 🧭 [`programming-guidelines`](skills/programming-guidelines) | Universal coding standards to apply before editing, refactoring, debugging, or generating code. |
 | 🪛 [`skill-crafter`](skills/skill-crafter) | Create, edit, evaluate, and optimize new Agent Skills efficiently. |
 | 📜 [`agents-md-crafter`](skills/agents-md-crafter) | Design and update standard AI agent instruction files like `AGENTS.md`. |
 | 📝 [`readme-crafter`](skills/readme-crafter) | Focused documentation agent for creating and revising `README.md` files. |
@@ -113,7 +114,7 @@ Contributions are welcome! Suggested flow:
 3. Run `pre-commit run --all-files`
 4. Open a pull request with a clear summary and rationale
 
-*If you are creating a new skill, use the custom agent definition in `.github/agents/agents-crafter.agent.md` as a structural reference.*
+*If you are creating a new skill, use the custom agent definition in `.github/agents/agent-instructions-maintainer.agent.md` as a structural reference.*
 
 ## 📄 License
 
